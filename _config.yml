@@ -5,7 +5,7 @@ logo: site-logo-120x120.png # 120x120 px default image used for Twitter summary 
 teaser: #400x250.gif # 400x250 px default teaser image used in image archive grid
 locale: en_US
 timezone: America/New_York
-url: http://robertwtucker.com
+url: https://robertwtucker.com
 
 
 # Jekyll configuration
@@ -35,7 +35,7 @@ titlecase: true
 # Site owner
 owner:
   name: Robert Tucker
-  email: 
+  email:
   twitter: robertwtucker
   google:
     plus: +robertwtucker
