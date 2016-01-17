@@ -46,4 +46,4 @@ owner:
   disqus-shortname: robertwtucker
 
 
-exclude: [".sass-cache", "Gemfile", "Gemfile.lock", "README.md", "LICENSE", "tmp"]
+exclude: [".sass-cache", "Gemfile", "Gemfile.lock", "README.md", "LICENSE", "tmp", "vendor"]
