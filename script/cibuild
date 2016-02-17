@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 set -e
 
-bundle exec jekyll build
-bundle exec htmlproof ./_site --disable-external
+jekyll build
+htmlproof ./_site --disable-external
