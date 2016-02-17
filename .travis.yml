@@ -2,7 +2,7 @@ language: ruby
 rvm:
 - 2.2
 
-install: gem install github-pages html-proofer
+install: gem install github-pages jekyll-github-metadata html-proofer
 script: ./script/cibuild
 
 # branch whitelist, only for GitHub Pages
