@@ -1,49 +1,26 @@
-# Site wide configuration
-title: Robert Tucker
-description: A collection of minutia
-logo: site-logo-120x120.png # 120x120 px default image used for Twitter summary card
-teaser: #400x250.gif # 400x250 px default teaser image used in image archive grid
-locale: en_US
-timezone: America/New_York
-url: https://robertwtucker.com
+# Dependencies
+markdown:         kramdown
+highlighter:      rouge
 
+# Permalinks
+permalink:        pretty
 
-# Jekyll configuration
-sass:
-    sass_dir: _sass
-    style: compressed
-permalink: /:categories/:title/
-kramdown:
-  toc_levels: 1..2
-highlighter: rouge
+# Setup
+title:            Robert Tucker
+tagline:          'A collection of minutia'
+description:      'A collection of minutia'
+url:              https://robertwtucker.com
+baseurl:          /
+
+author:
+  name:           'Robert Tucker'
+  url:            https://twitter.com/robertwtucker
+
+paginate:         3
+
+github:
+  repo:           https://github.com/robertwtucker/
+
 gems:
-  - jekyll-sitemap
-
-# Octopress configuration
-# Default extensions
-post_ext: md
-page_ext: md
-
-# Found in _templates/
-post_layout: article
-page_layout: article
-
-# Format titles with titlecase?
-titlecase: true
-
-
-# Site owner
-owner:
-  name: Robert Tucker
-  email:
-  twitter: robertwtucker
-  google:
-    plus: +robertwtucker
-    ad-client:
-    ad-slot:
-  bio:
-  avatar: bio-photo.jpg # 160x160 px image for author byline
-  disqus-shortname: robertwtucker
-
-
-exclude: [".sass-cache", "Gemfile", "Gemfile.lock", "README.md", "LICENSE", "tmp", "vendor"]
+  - jekyll-paginate
+  - jekyll-gist
