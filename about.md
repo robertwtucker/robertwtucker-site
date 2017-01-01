@@ -3,11 +3,7 @@ layout: page
 title: About
 ---
 
-<p class="message">
-  Thanks for reading! This page is a work in progress...
-</p>
-
-Robert Tucker is a software professional currently working as a Solution Architect with [GMC Software](http://gmc.net). He has previously held positions...
+Robert Tucker is a software professional currently working as a Solution Architect with [GMC Software](http://gmc.net). Over the years, he has held various roles in the industry with stints in Product Management and R&D. Prior to that, he spent over a decade in Professionl Services (consulting) with Microsoft and a regional service provider.
 
 ### The terms
 
