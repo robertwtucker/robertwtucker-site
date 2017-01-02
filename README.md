@@ -1,13 +1,13 @@
-# Robert Tucker's Personal website
+# Robert Tucker's Personal Website
 
 [![Build Status](https://travis-ci.org/robertwtucker/robertwtucker.github.io.svg?branch=master)](https://travis-ci.org/robertwtucker/robertwtucker.github.io)
 
 ## Overview
 
-This is the source repository for Robert Tucker's personal website at <http://robertwtucker.com>. It is:
+This is the source repository for Robert Tucker's personal website at <https://robertwtucker.com>. It is:
 
-- Coded with [Atom](http://atom.io) in vim-mode on a Mac
-- Built using [Jekyll](http://jekyllrb.com)
+- Coded with [Atom](https://atom.io) in vim-mode on a Mac
+- Built using [Jekyll](https://jekyllrb.com)
 - Hosted on [GitHub Pages](https://pages.github.com)
 
 A [Docker Compose](https://docs.docker.com/compose/overview/) configuration file is included to assist with local development and testing. With Docker [installed](https://docs.docker.com/engine/getstarted/step_one/), after cloning the repository locally, use the following command in the root of the repository directory to get started:
