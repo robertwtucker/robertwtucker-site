@@ -1,14 +1,13 @@
 --- 
 draft: false
 date: "2016-12-31"
-title: Better Late Than Never
+title: Better Late Than Never...
 description: You gotta start somewhere
 slug: first-post
 authors: [Robert Tucker]
-tags: [writing]
-categories: []
-externalLink: ""
-series: []
+tags: []
+categories:
+- Writing
 ---
 
 As this site nears its first birthday, I figure it's time for an update. Some actual content might be nice, too! Yeah, this site has been up almost a year and I have yet to post anything.
