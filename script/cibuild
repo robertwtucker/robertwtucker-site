@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-set -e
-
-jekyll build
-htmlproofer ./_site --disable-external
