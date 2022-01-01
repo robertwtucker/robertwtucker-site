@@ -54,10 +54,10 @@ params:
     icon: fa fa-github fa-2x
     weight: 1
     url: https://github.com/robertwtucker/
-  - name: Gitlab
-    icon: fa fa-gitlab fa-2x
+  - name: Keybase
+    icon: fa fa-keybase fa-2x
     weight: 2
-    url: https://gitlab.com/robertwtucker/
+    url: https://keybase.io/robertwtucker/
   - name: Twitter
     icon: fa fa-twitter fa-2x
     weight: 3
