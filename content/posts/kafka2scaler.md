@@ -1,6 +1,6 @@
 --- 
 draft: false
-date: "2019-08-09"
+date: 2019-08-09
 title: "Integrating Apache Kafka and Inspire Scaler"
 description: "Proof of concept integration of Apache Kafka with Inspire Scaler"
 slug: kafka2scaler
@@ -19,7 +19,7 @@ categories:
 ---
 ## Introduction
 
-With the advent of new industry paradigms (a.k.a. buzzwords) like big data and microservices architecture, many enterprise customers are starting to incorporate traditionally cloud-centric programming technologies and architectural components in their environments (whether that be on-prem, cloud or a hybrid of the two). Enterprise architects are realizing that wide streams of data need to be captured and processed in order to build the next generation of digital services like predictive analytics and artificial intelligence (AI). Over the last few years, [Apache Kafka](https://kafka.apache.org) has been gaining popularity as a key component of these streaming data pipelines. As such, it is not uncommon to get queries from prospects' IT groups as to whether or not [Quadient](https://quadient.com) can integrate with Kafka. This post will provide a high-level overview and walk-through of one such way [Inspire Scaler](https://www.quadient.com/intelligent-communication/customer-communications/omnichannel-communications-interactions/inspire-platform) and Apache Kafka could be integrated to work together.
+With the advent of new industry paradigms (a.k.a. buzzwords) like big data and micro-services architecture, many enterprise customers are starting to incorporate traditionally cloud-centric programming technologies and architectural components in their environments (whether that be on-prem, cloud or a hybrid of the two). Enterprise architects are realizing that wide streams of data need to be captured and processed in order to build the next generation of digital services like predictive analytics and artificial intelligence (AI). Over the last few years, [Apache Kafka](https://kafka.apache.org) has been gaining popularity as a key component of these streaming data pipelines. As such, it is not uncommon to get queries from prospects' IT groups as to whether or not [Quadient](https://quadient.com) can integrate with Kafka. This post will provide a high-level overview and walk-through of one such way [Inspire Scaler](https://www.quadient.com/intelligent-communication/customer-communications/omnichannel-communications-interactions/inspire-platform) and Apache Kafka could be integrated to work together.
 
 ## Solution Components
 
@@ -48,7 +48,7 @@ From an integration perspective, we will be using Camel to implement the [*Messa
 
 The instructions in this section provide a step-by-step guide to creating and configuring a Spring Boot application using Apache Camel to provide a gateway to Inspire Scaler. A full copy of the completed project and its assets can be found [on GitHub](https://github.com/robertwtucker/kafka2scaler-demo). This guide assumes that you already have a working Kafka/Zookeeper environment up and accessible from your local machine. If not, a [Docker demo environment](#using-the-docker-demo-environment) is provided. Should you wish to install and run Kafka directly on your local machine, please see the [Kafka Quickstart](https://kafka.apache.org/quickstart) tutorial for instructions.
 
-### Pre-requisites
+### Prerequisites
 
 This guide assumes that the following software is properly installed and configured on the machine being used. For more information, please see the installation links provided.
 
@@ -101,30 +101,30 @@ For simplicity's sake, this section is written as though the [Docker demo enviro
 Before proceeding further, read the [Using the Docker Demo Environment](#using-the-docker-demo-environment) section and follow the instructions to start it up. Once the Kafka server is running, open a terminal window or command prompt and switch to the directory you installed Kafka in. To create a topic to use for passing messages to Scaler, run one of the following scripts with the supplied parameters based on your operating system:
 
 *MacOS & Linux*
-```console
+``` bash
 > bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --topic inspire --replication-factor 1 --partitions 1
 ```
 
 *Windows*
-```console
+``` bash
 > bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --create --topic inspire --replication-factor 1 --partitions 1
 ```
 
 If you would like to verify that the topic was properly created, you can use the command with the `--list` parameter and you should see **inspire** listed among the output.
 
 *MacOS & Linux*
-```console
+``` bash
 > bin/kafka-topics.sh --bootstrap-server localhost:9092 --list
 ```
 
 *Windows*
-```console
+``` bash
 > bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --list
 ```
 
 As mentioned previously, there is an option to use a Docker container based on the same Kafka image used for the demo environment in lieu of installing Kafka's binary distribution. For example, to create the topic in Kafka, you could execute the following:
 
-```console
+``` bash
 > docker run --rm --network kafka-demo confluentinc/cp-kafka \
 >   kafka-topics --zookeeper zookeeper:2181 --create \
 >   --topic inspire --replication-factor 1 --partitions 1
@@ -132,7 +132,7 @@ As mentioned previously, there is an option to use a Docker container based on t
 
 **Important**: Because the [Confluent Platform](https://www.confluent.io/product/confluent-platform/) Docker image for Kafka defines three volume mount-points, each time a `docker run` command using the image is executed, three new Docker volumes are created. Even though these volumes are very small in size, this can lead to the creation of a plethora of Docker volumes without an associated container. Use a Docker command similar to the following (adjust as appropriate for your operating system) to make sure that these are cleaned up when you are finished working with the containers:
 
-```console
+``` bash
 > docker volume rm $(docker ls -qf dangling=true)
 ```
 
@@ -177,7 +177,7 @@ Before we can define the route, we need to add the Camel connectors we will be u
 
 4. Copy and paste the route definition that follows into the editor:
 
-   ```
+   ``` xml
    <routes xmlns="http://camel.apache.org/schema/spring">
       <route id="kafka2scaler">
          <from uri="kafka:{{kafka.consumer.topic}}?brokers={{kafka.brokers}}&amp;groupId={{kafka.consumer.groupId}}&amp;seekTo={{kafka.consumer.seekTo}}"/>
@@ -194,7 +194,7 @@ Before we can define the route, we need to add the Camel connectors we will be u
 
 6. Copy and paste the application configuration information below into the editor:
 
-   ```
+   ``` yaml
    camel:
      springboot:
        main-run-controller: true
@@ -219,7 +219,7 @@ Before we can define the route, we need to add the Camel connectors we will be u
 
 Using a terminal window or command prompt, switch to the project's root directory. If all of the steps in the [previous section](#configure-apache-camel) were completed correctly, we should be able to build and run our application. Use the [Gradle](https://gradle.org) build tool provided with the project to compile the source files.
 
-```
+``` bash
 > ./gradlew build
 ```
 
@@ -229,7 +229,7 @@ If everything is correct, you will see a `BUILD SUCCESSFUL` message once all of 
 
 When the application is compiled, we can now use the Spring Boot plugin to run the application directly.
 
-```
+``` bash
 > ./gradlew bootRun
 ```
 
@@ -240,18 +240,18 @@ As the application starts, several informational messages will be logged to the 
 With our application waiting to do work, it's now time to send (produce) a message to our Kafka topic for our application to consume. Open a new terminal window or command prompt and switch to the directory you installed Kafka in. To produce a message, run one of the following scripts with the supplied parameters based on your operating system:
 
 *MacOS & Linux*
-```
+``` bash
 > bin/kafka-console-producer.sh --broker-list localhost:9092 --topic inspire
 ```
 
 *Windows*
-```console
+``` bash
 > bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic inspire
 ```
 
 This starts Kafka's *Console Producer*. Anything typed on the line will be sent to our topic on the Kafka server. At the prompt, type in a fictitious JSON payload and hit `Enter` to send it:
 
-```
+``` json
 > {"data":{"name":"foo","value":"blah"}}
 ```
 
@@ -294,14 +294,14 @@ Basic c3lzdGVtOlBhc3N3b3JkMQ==
 
 where the string of characters following `"Basic "` is a base64-encoded value formed by encoding the username and password joined by a colon. This can be added to the HTTP section in the application configuration file (*application.yaml*) as shown below:
 
-```
+``` yaml
 http:
   auth-header: Basic c3lzdGVtOlBhc3N3b3JkMQ==
 ```
 
 In the *routes.xml* file, add the following before line with the HTTP4 component:
 
-```
+``` xml
 <setHeader headerName="Authorization">
   <constant>{{http.auth-header}}</constant>
 </setHeader>
@@ -311,7 +311,7 @@ In the *routes.xml* file, add the following before line with the HTTP4 component
 
 If you would rather not work with base64-encoded values, the username and password to use can be included directly in the HTTP4 component's URI configuration. With the username and password added to the application configuration file (*application.yaml*):
 
-```
+``` yaml
 http:
   username: system
   password: Password1
@@ -319,14 +319,14 @@ http:
 
 the HTTP4 component in the *routes.xml* file can be modified as follows:
 
-```
+``` xml
 <to uri="http4:{{http.host}}:{{http.port}}{{http.resourceUrl}}?httpMethod={{http.method}}&amp;authUsername={{http.username}}&amp;authPassword={{http.password}}&amp;authenticationPreemptive=true"/>
 
 ```
 
 ### Creating a Response in Scaler and Publishing it to Kafka
 
-\[TBD/Future\]
+Update: This exercise is covered in [Sending Output from Inspire Scaler to Apache Kafka](/posts/scaler2kafka/).
 
 ## Using the Docker Demo Environment
 
@@ -334,7 +334,7 @@ In order to provide ready access to a Kafka environment for testing this integra
 
 To start the demo environment, from a console window or command prompt in the project root directory, execute:
 
-```console
+``` bash
 > docker-compose up -d
 ```
 
