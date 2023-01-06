@@ -15,10 +15,9 @@ All content provided is for informational purposes only. The posts on this websi
 
 In case you were wondering, this site is:
 
-- Coded with [Visual Studio Code](https://code.visualstudio.com) in vim-mode on a Mac
-- Built using [Hugo](https://gohugo.io)
-- Hosted on [GitHub Pages](https://pages.github.com)
-- [Open source](https://github.com/robertwtucker/robertwtucker.github.io) and made available under the [MIT License](https://github.com/robertwtucker/robertwtucker.github.io/blob/master/LICENSE.md)
+- Coded with [Visual Studio Code](https://code.visualstudio.com) in vim-mode on a Mac.
+- Built using [Hugo](https://gohugo.io).
+- Hosted on [Netlify](https://netlify.com).
+- [Open source](https://github.com/robertwtucker/robertwtucker.github.io) and made available under the [MIT License](https://github.com/robertwtucker/robertwtucker.github.io/blob/master/LICENSE.md).
 
 Have comments or questions? Feel free to [open an issue on GitHub](https://github.com/robertwtucker/ama/issues/new) or [ask me on Twitter](https://twitter.com/robertwtucker).
-
