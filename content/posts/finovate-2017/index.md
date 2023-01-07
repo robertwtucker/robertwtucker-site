@@ -21,7 +21,7 @@ Here's how [Finovate](https://finovate.com) describes their event:
 
 > \[Finovate\] provides fintech professionals with an opportunity to see the future of fintech today. The companies that demo their technologies live at Finovate conferences are the same innovators that financial institutions all over the world seek out for partnerships, collaborations, and insights into how to use technology to better serve, engage, and understand their customers and clients.
 
-![The conference stage](/images/FF2017_rehe_image3.jpg)
+![The conference stage](FF2017_rehe_image3.jpg)
 
 As far as demos go, Finovate has a unique way of keeping things interesting for attendees. Presenters have seven minutes. Period. No, really. When the time expires, a bell rings, mics get cut and the stage goes dark.
 
