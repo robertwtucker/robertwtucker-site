@@ -16,6 +16,7 @@ params:
   author: Robert Tucker
   info: [Eclectic Developer]
   description: Robert Tucker's personal website
+  images: [images/site-feature-image.jpg]
   keywords: [blog,developer,personal]
   avatarurl: images/avatar.jpg
   # gravatar: john.doe@example.com
