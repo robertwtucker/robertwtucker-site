@@ -44,9 +44,9 @@ params:
   # Custom JS
   customJS: []
 
-  # If you want to use Cloudflare Web Analytics (https://cloudflare.com) for analytics, add this section
-  # cloudflare
-  #   token: token"
+  # Analytics
+  goatCounter:
+    code: robertwtucker
 
   # Social links
   social:
