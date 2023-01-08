@@ -73,6 +73,22 @@ params:
     rel: alternate
     type: application/rss+xml
 
+  # giscus (comment system)
+  giscus:
+    repo: robertwtucker/robertwtucker-site
+    repoID: MDEwOlJlcG9zaXRvcnk0OTA0NDkyMQ==
+    category: General
+    categoryID: DIC_kwDOAuxduc4CTd0W
+    mapping: title
+    theme: preferred_color_scheme
+    loading: lazy
+    term: ""
+    # Default settings in giscus partial
+    # emit-metadata: 0
+    # input-position: bottom
+    # lang: en
+    # reactions-enabled: 1
+
 # Taxonomies
 taxonomies:
   category: categories
