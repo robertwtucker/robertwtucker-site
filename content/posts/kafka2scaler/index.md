@@ -4,8 +4,7 @@ date: 2019-08-09
 title: "Integrating Apache Kafka and Inspire Scaler"
 description: "Proof of concept integration of Apache Kafka with Inspire Scaler"
 slug: kafka2scaler
-authors:
-- Robert Tucker
+authors: [Robert Tucker]
 tags:
 - integration-patterns
 - quadient
@@ -42,7 +41,7 @@ The [Spring](https://spring.io) framework is a project that was started back in 
 
 From an integration perspective, we will be using Camel to implement the [*Message Gateway* pattern](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessagingGateway.html). As per the pattern, Camel handles all of the communication with Kafka so Scaler will not require any Kafka-specific code or configuration.
 
-![Messaging Gateway pattern](/images/messaging-gateway.png)
+![Messaging Gateway pattern](messaging-gateway.png)
 
 ## How-To Guide
 
@@ -76,17 +75,17 @@ In many cases, the Scaler workflow(s) we will need to integrate with (invoke) wi
 
    You can either drag and drop the components from the palette to the canvas or just double-click them in the palette to move them over. Once finished, make sure that the components are all linked together in the aforementioned order.
 
-   ![Scaler workflow components linked](/images/scaler-workflow.png)
+   ![Scaler workflow components linked](scaler-workflow.png)
 
 4. Edit the **HTTP Input** component. Enter `simplews` for the *URL Endpoint* and set the *API authentication group* to *no authentication*. Take note of the *Request URL*. We will need this information later in order to contact this workflow via HTTP. Be sure to click *OK* to close the component detail popup and not the *X* so that the changes made will be persisted in memory.
 
-   ![HTTP Input component](/images/http-input.png)
+   ![HTTP Input component](http-input.png)
 
 5. Open the **Script** component. In the *Variables* tab, click the *Required* checkbox for the *body* variable.
 
 6. Add a simple line of script, `console.info(getvar("body"))`, in the code area. This will allow us to see exactly what was passed to Scaler in the body of the HTTP request from the *Job* details once the request is completed. Click *OK* to close the window.
 
-   ![Script component](/images/script-component.png)
+   ![Script component](script-component.png)
 
 7. Edit the **HTTP Output** component, setting the *Response Type* to *Confirmation (HTTP 204)* before clicking *OK*.
 
@@ -140,7 +139,7 @@ As mentioned previously, there is an option to use a Docker container based on t
 
 1. In the browser, navigate to the Spring Initializr at [https://start.spring.io](https://start.spring.io).
 
-   ![Spring Initializr](/images/spring-initializr.png)
+   ![Spring Initializr](spring-initializr.png)
 
 2. Choose *Gradle Project* as the type of project and leave the *Language* and *Spring Boot* settings at their default.
 
@@ -257,7 +256,7 @@ This starts Kafka's *Console Producer*. Anything typed on the line will be sent 
 
 If you look back at the terminal window/command prompt running our Java application with Camel, you should see entries in the log similar to the image that follows:
 
-![Console Log Output](/images/log-output.png)
+![Console Log Output](log-output.png)
 
 You can exit the *Console Producer* by typing `Control+C`.
 
@@ -273,7 +272,7 @@ While the log output told us that Scaler returned `HTTP 204` like we configured 
 
 4. Select the *Script* component in the *Job Details* window and the *Script Log* should show the JSON payload we sent to Kafka.
 
-   ![Job Details](/images/job-details.png)
+   ![Job Details](job-details.png)
 
 Aaand we're done! You have now successfully sent a message to Inspire Scaler via Apache Kafka! Congratulations!
 

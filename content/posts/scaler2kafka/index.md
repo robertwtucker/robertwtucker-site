@@ -4,8 +4,7 @@ date: 2022-01-02
 title: "Sending Output from Inspire Scaler to Apache Kafka"
 description: "Further PoC work to demonstrate producing Kafka messages from Scaler"
 slug: "scaler2kafka"
-authors:
-- Robert Tucker
+authors: [Robert Tucker]
 tags:
 - integration-patterns
 - quadient
@@ -72,7 +71,7 @@ The `kafka2file` route sets up a Kafka consumer using the [Camel Kafka Component
 
 Depending on the Inspire document application being used, the Scaler workflow might vary from that depicted below. The key action begins with configuring the **Document Creator** component to send its output to the `spool` custom variable. This is usually the default but that might not be the case if you are adapting an existing workflow. 
   
-![Scaler Workflow](/images/scaler-producer-workflow.png)
+![Scaler Workflow](scaler-producer-workflow.png)
 
 #### Script Component
 
@@ -89,13 +88,13 @@ Add an **HTTP Caller** component after the script. This will be responsible for 
 
 Enter or configure a value for the **Request URL** that will resolve to the address that the `scaler2kafka` Camel route is listening to. If you're using the application from the companion repository with the default configuration, the service will be listening at `http://localhost:10101/bridge`. Set the **Request method** to `POST`.
 
-![HTTP Caller Request Tab](/images/scaler-http-request.png)
+![HTTP Caller Request Tab](scaler-http-request.png)
 
 ###### HTTP Request — Body Tab
 
 Create a payload for the body of HTTP Request that will communicate the document output that was base64-encoded in the earlier step. As shown below, I included some additional metadata that might be useful for a hypothetical downstream application/service that will consume the message from Kafka.
   
-![HTTP Caller Body Tab](/images/scaler-http-body.png)
+![HTTP Caller Body Tab](scaler-http-body.png)
 
 ### Running the Application
 
