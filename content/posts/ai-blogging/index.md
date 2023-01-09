@@ -2,8 +2,7 @@
 draft: false
 date: 2023-01-08
 title: An AI-Assisted Blog Post
-description: How I used Mem.ai to create a blog post.
-images: [post-cover.jpg]
+description: How I used Mem to create a blog post.
 slug: ai-blogging
 authors: [Robert Tucker]
 tags: [ai, git, gtd, mem]
