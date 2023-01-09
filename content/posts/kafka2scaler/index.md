@@ -16,6 +16,13 @@ categories:
 - Integration
 - Development
 ---
+
+{{< notice info >}}
+Beginning with R15.4-FMAP and enhanced in R15.5-FMAP, Inspire Scaler now provides direct support for
+consuming input/producing output via Apache Kafka v2.x and v3.x. This functionality will be
+generally-available in the R16.0 release which is currently planned for June 2023.
+{{< /notice >}}
+
 ## Introduction
 
 With the advent of new industry paradigms (a.k.a. buzzwords) like big data and micro-services architecture, many enterprise customers are starting to incorporate traditionally cloud-centric programming technologies and architectural components in their environments (whether that be on-prem, cloud or a hybrid of the two). Enterprise architects are realizing that wide streams of data need to be captured and processed in order to build the next generation of digital services like predictive analytics and artificial intelligence (AI). Over the last few years, [Apache Kafka](https://kafka.apache.org) has been gaining popularity as a key component of these streaming data pipelines. As such, it is not uncommon to get queries from prospects' IT groups as to whether or not [Quadient](https://quadient.com) can integrate with Kafka. This post will provide a high-level overview and walk-through of one such way [Inspire Scaler](https://www.quadient.com/intelligent-communication/customer-communications/omnichannel-communications-interactions/inspire-platform) and Apache Kafka could be integrated to work together.
@@ -325,7 +332,10 @@ the HTTP4 component in the *routes.xml* file can be modified as follows:
 
 ### Creating a Response in Scaler and Publishing it to Kafka
 
-Update: This exercise is covered in [Sending Output from Inspire Scaler to Apache Kafka](/posts/scaler2kafka/).
+{{< notice info >}}
+**Update**: This exercise is covered in the post 
+[Sending Output from Inspire Scaler to Apache Kafka](/posts/scaler2kafka/).
+{{< /notice >}}
 
 ## Using the Docker Demo Environment
 
