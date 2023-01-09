@@ -1,6 +1,6 @@
 --- 
 draft: false
-date: 2023-01-06
+date: 2023-01-08
 title: An AI-Assisted Blog Post
 description: How I used Mem.ai to create a blog post.
 images: [post-cover.jpg]
@@ -74,6 +74,7 @@ In conclusion, keeping a fork of a repository up to date with the original repos
 ## Conclusion
 
 While I'm the last one that should be judging anyone's writing, I feel like it's a little verbose
-(Mem does have options to improve this) and the style is somewhat stilted. Nevertheless, color me
-impressed! I'll have to do some more experimenting with different types of content. I can't promise
-I'll blog more, but it's a thought.
+(Mem does have options to improve this) and the style is somewhat stilted for my taste. Nevertheless,
+color me impressed! I'll have to do some more experimenting with different types of content. I'd have to
+say that AI-assisted blogging can definitely help save time on content creation. Who knows, it might even
+improve the quality of my work. I can't promise I'll blog more, but it's a thought.
