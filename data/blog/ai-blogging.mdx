@@ -1,25 +1,24 @@
---- 
+---
+title: 'An AI-Assisted Blog Post'
+date: '2023-01-08'
+tags: ['ai', 'git', 'how-to']
+summary: 'How I used Mem to create a blog post.'
 draft: false
-date: 2023-01-08
-title: An AI-Assisted Blog Post
-description: How I used Mem to create a blog post.
-slug: ai-blogging
-authors: [Robert Tucker]
-tags: [ai, git, gtd, mem]
-categories: [Writing]
+layout: PostBanner
+images: ['/static/images/ai-blogging/post-cover.jpg']
 ---
 
 Here I was thinking that I was about due for another blog post (it's been almost a year, after
 all...) and \***BOOM!**\* post content literally appears on my screen.
 
-![Want me to write you a blog post?](SCR-20230105-wn7.png)
+![Want me to write you a blog post?](/static/images/ai-blogging/SCR-20230105-wn7.png)
 
 ## Some background
 
 While I wouldn't call myself a [GTD](https://gettingthingsdone.com/what-is-gtd/)-adherent in the
 strictest sense, I am a longtime fan and regularly work at implementing some of the key principles
 in pursuit of personal productivity. One such tactic is the practice of dumping everything into a
-central place so as to achieve the "*Mind Like Water*" state that results from not having to worry
+central place so as to achieve the "_Mind Like Water_" state that results from not having to worry
 about what I might be forgetting.
 
 I've been a [Mem](https://get.mem.ai/) user since it was in beta (over 18 months now). The idea
@@ -35,9 +34,9 @@ Yesterday, I needed to pull in updates from an upstream repository I forked on
 way to do it. Because I practice what I preach, I was creating a mem so I could quickly recall the
 process should I forget how by the next time I need to do so. The mem itself is pictured below.
 
-![The Mem I was working on](SCR-20230105-wlf.png)
+![The Mem I was working on](/static/images/ai-blogging/SCR-20230105-wlf.png)
 
-As I was highlighting content to format it, I noticed Mem's *Smart Edit* button on the popup menu
+As I was highlighting content to format it, I noticed Mem's _Smart Edit_ button on the popup menu
 and decided to click it. That's what resulted in a dialog similar to the first image pictured above.
 When I finished editing, I highlighted all of the content and let Mem's AI do the work. The result
 follows.
@@ -48,19 +47,19 @@ Keeping a fork of a repository up to date with the original repository is a rela
 
 The first step is to add a remote for the original (upstream) repository in the forked repository. This is done by navigating to the cloned fork repository on your local machine and running the following command:
 
-``` bash
+```bash
 git remote add upstream git://github.com/ORIGINAL-DEV-USERNAME/REPO-YOU-FORKED-FROM.git
 ```
 
 The next step is to fetch the upstream repository. This will ensure that you have all the latest changes from the original repository. To do this, run the following command:
 
-``` bash
+```bash
 git fetch upstream
 ```
 
 To periodically update the fork with changes from the original (upstream) repository, run the following command:
 
-``` bash
+```bash
 git pull upstream master
 ```
 
