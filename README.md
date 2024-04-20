@@ -7,7 +7,7 @@
 This is the source repository for Robert Tucker's personal website at [https://robertwtucker.com](https://robertwtucker.com). It is:
 
 - Coded with [Visual Studio Code](https://code.visualstudio.com) in vim-mode on a Mac.
-- Built using [Hugo](https://gohugo.io).
+- Built using [Next.js](https://nextjs.org).
 - Hosted on [Netlify](https://netlify.com).
 
 ## Development
