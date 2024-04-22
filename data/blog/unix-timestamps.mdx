@@ -8,7 +8,10 @@ draft: false
 
 ## TL;DR
 
-gist robertwtucker 5364019e79dcb808d449ea733e612449
+```javascript
+const urlencoded = new URLSearchParams()
+urlencoded.append('timestamp', Math.floor(new Date().getTime() / 1000).toString())
+```
 
 ## Context
 
