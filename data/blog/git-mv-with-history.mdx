@@ -25,7 +25,20 @@ I also saw several examples that talked about using a `git filter-repo` command.
 
 OK, enough preamble. Here's the process I followed:
 
-gist robertwtucker 629a20a0664ad6ce87adbe2cc81e5dd6
+```bash
+mkdir ~/dirswap && cd ~/dirswap
+git clone repo1.git && cd repo1
+# My use case: repo1/chart -> repo2/appname (mv < migration)
+mv chart appname
+git commit -am "chore: migrating helm chart to charts repo"
+git filter-repo --path-rename chart/:appname/ --force
+mkdir /tmp/mergepatches
+export REPOSRC=appname    # (or srcfile.go if moving a file)
+git format-patch -o /tmp/mergepatches $(git log $REPOSRC|grep ^commit|tail -1|awk '{print $2}')^..HEAD $REPOSRC
+cd ~/dirswap
+git clone repo2.git && cd repo2
+git am /tmp/mergepatches/*.patch
+```
 
 ## The Bottom Line
 
