@@ -1,6 +1,6 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'Eclectic Development',
+  title: 'Eclectic Developer',
   author: 'Robert Tucker',
   headerTitle: 'Robert Tucker',
   description: 'Ramblings of an eclectic developer',
