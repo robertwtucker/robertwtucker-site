@@ -28,7 +28,7 @@
     "next-themes": "^0.3.0",
     "pliny": "0.2.0",
     "postcss": "^8.4.24",
-    "react": "18.2.0",
+    "react": "18.3.1",
     "react-dom": "18.2.0",
     "reading-time": "1.5.0",
     "rehype-autolink-headings": "^7.1.0",
@@ -46,7 +46,7 @@
   "devDependencies": {
     "@svgr/webpack": "^8.0.1",
     "@types/mdx": "^2.0.12",
-    "@types/react": "^18.2.73",
+    "@types/react": "^18.3.1",
     "@typescript-eslint/eslint-plugin": "^6.1.0",
     "@typescript-eslint/parser": "^6.1.0",
     "cross-env": "^7.0.3",
