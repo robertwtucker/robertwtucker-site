@@ -48,7 +48,7 @@
     "@types/mdx": "^2.0.12",
     "@types/react": "^18.3.2",
     "@typescript-eslint/eslint-plugin": "^7.7.1",
-    "@typescript-eslint/parser": "^7.7.1",
+    "@typescript-eslint/parser": "^7.9.0",
     "cross-env": "^7.0.3",
     "eslint": "^8.45.0",
     "eslint-config-next": "14.2.3",
