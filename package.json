@@ -27,7 +27,7 @@
     "next-contentlayer2": "0.4.4",
     "next-themes": "^0.3.0",
     "pliny": "0.2.2",
-    "postcss": "^8.4.40",
+    "postcss": "^8.4.45",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "reading-time": "1.5.0",
