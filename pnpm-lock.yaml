@@ -75,8 +75,8 @@ importers:
         specifier: ^7.0.1
         version: 7.0.1
       rehype-preset-minify:
-        specifier: 7.0.0
-        version: 7.0.0
+        specifier: 7.0.1
+        version: 7.0.1
       rehype-prism-plus:
         specifier: ^2.0.0
         version: 2.0.0
@@ -4187,8 +4187,8 @@ packages:
   rehype-parse@9.0.0:
     resolution: {integrity: sha512-WG7nfvmWWkCR++KEkZevZb/uw41E8TsH4DsY9UxsTbIXCVGbAs4S+r8FrQ+OtH5EEQAs+5UxKC42VinkmpA1Yw==}
 
-  rehype-preset-minify@7.0.0:
-    resolution: {integrity: sha512-bZ/k4Th7I3n2+6qOM7fMysvfGWNrSeJ6ACStZpdAnZMIHx50onj4l+fMBfI8oZEOxQXZUINw7L20Hxg/Qr6N4g==}
+  rehype-preset-minify@7.0.1:
+    resolution: {integrity: sha512-yI5Jdfkg8cVar+d5GgqL3HdM1uFOSvnjIOuoJz2U5ZDOSTMrxPrFlh1egNzYNdddwVXakUz9ivKeCuZbATsFDQ==}
 
   rehype-prism-plus@2.0.0:
     resolution: {integrity: sha512-FeM/9V2N7EvDZVdR2dqhAzlw5YI49m9Tgn7ZrYJeYHIahM6gcXpH0K1y2gNnKanZCydOMluJvX2cB9z3lhY8XQ==}
@@ -9931,7 +9931,7 @@ snapshots:
       hast-util-from-html: 2.0.1
       unified: 11.0.4
 
-  rehype-preset-minify@7.0.0:
+  rehype-preset-minify@7.0.1:
     dependencies:
       rehype-minify-attribute-whitespace: 4.0.0
       rehype-minify-css-style: 4.0.0
