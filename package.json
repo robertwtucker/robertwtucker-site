@@ -1,6 +1,6 @@
 {
   "name": "robertwtucker-site",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "start": "next dev",
@@ -17,28 +17,31 @@
     "@tailwindcss/forms": "^0.5.9",
     "@tailwindcss/typography": "^0.5.15",
     "autoprefixer": "^10.4.20",
-    "contentlayer2": "0.4.4",
+    "body-scroll-lock": "^4.0.0-beta.0",
+    "contentlayer2": "0.5.3",
     "esbuild": "0.20.2",
     "github-slugger": "^2.0.0",
     "gray-matter": "^4.0.2",
     "hast-util-from-html-isomorphic": "^2.0.0",
     "image-size": "1.1.1",
-    "next": "14.2.10",
-    "next-contentlayer2": "0.4.4",
+    "next": "15.0.3",
+    "next-contentlayer2": "0.5.3",
     "next-themes": "^0.4.3",
     "pliny": "0.4.0",
     "postcss": "^8.4.49",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
+    "react": "rc",
+    "react-dom": "rc",
     "reading-time": "1.5.0",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-citation": "^2.2.2",
     "rehype-katex": "^7.0.1",
+    "rehype-katex-notranslate": "^1.1.4",
     "rehype-preset-minify": "7.0.1",
     "rehype-prism-plus": "^2.0.0",
     "rehype-slug": "^6.0.0",
     "remark": "^15.0.0",
     "remark-gfm": "^4.0.0",
+    "remark-github-blockquote-alert": "^1.2.1",
     "remark-math": "^6.0.0",
     "tailwindcss": "^3.4.15",
     "unist-util-visit": "^5.0.0"
@@ -47,10 +50,10 @@
     "@svgr/webpack": "^8.0.1",
     "@types/mdx": "^2.0.12",
     "@types/react": "^18.3.12",
-    "@typescript-eslint/eslint-plugin": "^7.18.0",
-    "@typescript-eslint/parser": "^7.18.0",
+    "@typescript-eslint/eslint-plugin": "^8.12.0",
+    "@typescript-eslint/parser": "^8.12.0",
     "cross-env": "^7.0.3",
-    "eslint": "^8.45.0",
+    "eslint": "^9.14.0",
     "eslint-config-next": "15.0.3",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
@@ -61,8 +64,12 @@
     "typescript": "^5.6.3"
   },
   "lint-staged": {
-    "*.+(js|jsx|ts|tsx)": ["eslint --fix"],
-    "*.+(js|jsx|ts|tsx|json|css|md|mdx)": ["prettier --write"]
+    "*.+(js|jsx|ts|tsx)": [
+      "eslint --fix"
+    ],
+    "*.+(js|jsx|ts|tsx|json|css|md|mdx)": [
+      "prettier --write"
+    ]
   },
-  "packageManager": "pnpm@9.1.1+sha256.9551e803dcb7a1839fdf5416153a844060c7bce013218ce823410532504ac10b"
+  "packageManager": "pnpm@9.14.2+sha512.6e2baf77d06b9362294152c851c4f278ede37ab1eba3a55fda317a4a17b209f4dbb973fb250a77abc463a341fcb1f17f17cfa24091c4eb319cda0d9b84278387"
 }
