@@ -12,9 +12,11 @@ const siteMetadata = {
   socialBanner: '/static/images/site-feature-image.jpg',
   // mastodon: 'https://mastodon.social/@robertwtucker',
   github: 'https://github.com/robertwtucker',
-  twitter: 'https://twitter.com/robertwtucker',
+  x: 'https://x.com/robertwtucker',
   linkedin: 'https://www.linkedin.com/in/robert-w-tucker',
   locale: 'en-US',
+  // set to true if you want a navbar fixed to the top
+  stickyNav: true,
   analytics: {
     // If you want to use an analytics provider you have to add it to the
     // content security policy in the `next.config.js` file.
@@ -28,6 +30,8 @@ const siteMetadata = {
     },
     // plausibleAnalytics: {
     //   plausibleDataDomain: '', // e.g. tailwind-nextjs-starter-blog.vercel.app
+    // If you are hosting your own Plausible.
+    //   src: '', // e.g. https://plausible.my-domain.com/js/script.js
     // },
     // simpleAnalytics: {},
     // posthogAnalytics: {
@@ -38,7 +42,7 @@ const siteMetadata = {
     // },
   },
   newsletter: {
-    // supports mailchimp, buttondown, convertkit, klaviyo, revue, emailoctopus
+    // supports mailchimp, buttondown, convertkit, klaviyo, revue, emailoctopus, beehive
     // Please add your .env file and modify it according to your selection
     // provider: 'buttondown',
   },
@@ -75,7 +79,7 @@ const siteMetadata = {
   search: {
     provider: 'kbar', // kbar or algolia
     kbarConfig: {
-      searchDocumentsPath: 'search.json', // path to load documents to search
+      searchDocumentsPath: `${process.env.BASE_PATH || ''}/search.json`, // path to load documents to search
     },
     // provider: 'algolia',
     // algoliaConfig: {
