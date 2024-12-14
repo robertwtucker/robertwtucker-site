@@ -30,7 +30,6 @@ public/sitemap.xml
 
 # misc
 .DS_Store
-*.pem
 
 # debug
 *.log
@@ -43,10 +42,6 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
 
 # Contentlayer
 .contentlayer
