@@ -49,13 +49,13 @@ importers:
         version: 15.4.7(@babel/core@7.27.7)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       next-contentlayer2:
         specifier: 0.5.5
-        version: 0.5.5(acorn@8.15.0)(contentlayer2@0.5.5(acorn@8.15.0)(esbuild@0.25.4))(esbuild@0.25.4)(next@15.4.7(@babel/core@7.27.7)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        version: 0.5.5(acorn@8.15.0)(contentlayer2@0.5.5(acorn@8.15.0)(esbuild@0.25.11))(esbuild@0.25.11)(next@15.4.7(@babel/core@7.27.7)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       next-themes:
         specifier: ^0.4.6
         version: 0.4.6(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       pliny:
         specifier: 0.4.1
-        version: 0.4.1(@algolia/client-search@5.29.0)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(acorn@8.15.0)(esbuild@0.25.4)(next@15.4.7(@babel/core@7.27.7)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(search-insights@2.13.0)
+        version: 0.4.1(@algolia/client-search@5.29.0)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(acorn@8.15.0)(esbuild@0.25.11)(next@15.4.7(@babel/core@7.27.7)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(search-insights@2.13.0)
       postcss:
         specifier: ^8.5.6
         version: 8.5.6
@@ -9468,11 +9468,11 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  next-contentlayer2@0.5.5(acorn@8.15.0)(contentlayer2@0.5.5(acorn@8.15.0)(esbuild@0.25.4))(esbuild@0.25.4)(next@15.4.7(@babel/core@7.27.7)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
+  next-contentlayer2@0.5.5(acorn@8.15.0)(contentlayer2@0.5.5(acorn@8.15.0)(esbuild@0.25.11))(esbuild@0.25.11)(next@15.4.7(@babel/core@7.27.7)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
     dependencies:
       '@contentlayer2/core': 0.5.5(acorn@8.15.0)(esbuild@0.25.11)
       '@contentlayer2/utils': 0.5.5
-      contentlayer2: 0.5.5(acorn@8.15.0)(esbuild@0.25.4)
+      contentlayer2: 0.5.5(acorn@8.15.0)(esbuild@0.25.11)
       next: 15.4.7(@babel/core@7.27.7)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
@@ -9670,7 +9670,7 @@ snapshots:
 
   pidtree@0.6.0: {}
 
-  pliny@0.4.1(@algolia/client-search@5.29.0)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(acorn@8.15.0)(esbuild@0.25.4)(next@15.4.7(@babel/core@7.27.7)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(search-insights@2.13.0):
+  pliny@0.4.1(@algolia/client-search@5.29.0)(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(acorn@8.15.0)(esbuild@0.25.11)(next@15.4.7(@babel/core@7.27.7)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(search-insights@2.13.0):
     dependencies:
       '@docsearch/react': 3.9.0(@algolia/client-search@5.29.0)(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(search-insights@2.13.0)
       '@giscus/react': 3.1.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -9681,7 +9681,7 @@ snapshots:
       js-yaml: 4.1.0
       kbar: 0.1.0-beta.45(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       next: 15.4.7(@babel/core@7.27.7)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      next-contentlayer2: 0.5.5(acorn@8.15.0)(contentlayer2@0.5.5(acorn@8.15.0)(esbuild@0.25.4))(esbuild@0.25.4)(next@15.4.7(@babel/core@7.27.7)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      next-contentlayer2: 0.5.5(acorn@8.15.0)(contentlayer2@0.5.5(acorn@8.15.0)(esbuild@0.25.11))(esbuild@0.25.11)(next@15.4.7(@babel/core@7.27.7)(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       next-themes: 0.3.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       probe-image-size: 7.2.3
       react: 19.2.0
