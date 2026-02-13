@@ -67,11 +67,17 @@ module.exports = () => {
     output,
     basePath,
     reactStrictMode: true,
-    trailingSlash: false,
-    pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
-    eslint: {
-      dirs: ['app', 'components', 'layouts', 'scripts'],
+    trailingSlash: true,
+    turbopack: {
+      root: process.cwd(),
+      rules: {
+        '*.svg': {
+          loaders: ['@svgr/webpack'],
+          as: '*.js',
+        },
+      },
     },
+    pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
     images: {
       remotePatterns: [
         {
