@@ -24,6 +24,7 @@
     "gray-matter": "^4.0.3",
     "hast-util-from-html-isomorphic": "^2.0.0",
     "image-size": "2.0.2",
+    "katex": "^0.16.33",
     "next": "16.1.6",
     "next-contentlayer2": "0.5.8",
     "next-themes": "^0.4.6",
