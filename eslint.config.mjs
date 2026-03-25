@@ -5,6 +5,8 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import js from '@eslint/js'
 import { FlatCompat } from '@eslint/eslintrc'
+import nextConfig from 'eslint-config-next'
+import nextCoreWebVitals from 'eslint-config-next/core-web-vitals'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -20,11 +22,9 @@ export default [
   ...compat.extends(
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:jsx-a11y/recommended',
-    'plugin:prettier/recommended',
-    'next',
-    'next/core-web-vitals'
+    'plugin:prettier/recommended'
   ),
+  ...nextCoreWebVitals,
   {
     plugins: {
       '@typescript-eslint': typescriptEslint,
