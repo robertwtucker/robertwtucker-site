@@ -1,6 +1,6 @@
 {
   "name": "robertwtucker-site",
-  "version": "0.2.13",
+  "version": "0.2.14",
   "private": true,
   "scripts": {
     "start": "next dev",
@@ -53,8 +53,8 @@
     "@svgr/webpack": "^8.1.0",
     "@types/mdx": "^2.0.13",
     "@types/react": "^19.2.14",
-    "@typescript-eslint/eslint-plugin": "^8.57.2",
-    "@typescript-eslint/parser": "^8.58.0",
+    "@typescript-eslint/eslint-plugin": "^8.58.1",
+    "@typescript-eslint/parser": "^8.58.1",
     "cross-env": "^10.1.0",
     "eslint": "^9.19.0",
     "eslint-config-next": "16.2.3",
