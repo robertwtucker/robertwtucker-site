@@ -13,6 +13,7 @@ const siteMetadata = {
   // mastodon: 'https://mastodon.social/@robertwtucker',
   github: 'https://github.com/robertwtucker',
   x: 'https://x.com/robertwtucker',
+  bluesky: 'https://bsky.app/profile/robertwtucker.com',
   linkedin: 'https://www.linkedin.com/in/robert-w-tucker',
   locale: 'en-US',
   // set to true if you want a navbar fixed to the top
