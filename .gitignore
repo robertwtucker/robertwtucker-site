@@ -17,6 +17,7 @@
 /out/
 public/sitemap.xml
 .vercel
+next-env.d.ts
 
 # production
 /build
