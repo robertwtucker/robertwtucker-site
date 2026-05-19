@@ -1,6 +1,6 @@
-# AGENTS.md
+# CLAUDE.md
 
-This file provides guidance to AI agents when working with code in this repository.
+This file provides guidance to Claude Code when working with code in this repository.
 
 ## Commands
 
@@ -9,11 +9,11 @@ This file provides guidance to AI agents when working with code in this reposito
 pnpm dev          # Start dev server (uses cross-env INIT_CWD=$PWD)
 pnpm build        # Build for production (contentlayer2 build → next build → postbuild RSS)
 pnpm serve        # Start production server
-pnpm lint         # Run ESLint with auto-fix across app, components, layouts, lib, scripts
+pnpm lint         # Run ESLint with auto-fix (paths configured in package.json)
 pnpm analyze      # Bundle analyzer (sets ANALYZE=true)
 ```
 
-The package manager is **pnpm** (`pnpm@10.24.0`). There are no tests in this project.
+The package manager is **pnpm** (version pinned in `package.json#packageManager`). There are no tests in this project.
 
 ## Architecture
 
