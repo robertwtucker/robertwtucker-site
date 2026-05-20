@@ -1,0 +1,56 @@
+---
+title: 'Turning the lights back on'
+date: '2026-05-20'
+tags: ['generalist-integrator', 'ai-practice']
+summary: 'Reopening the blog as a generalist-integrator figuring out what AI means for people like me — the ones who connect things rather than ship from inside a single platform team.'
+layout: PostBanner
+images: ['/static/images/ai-para-mcp.jpg']
+---
+
+There's a kind of software person who doesn't show up much in the current AI conversation. They've been writing code for years, but they aren't a senior engineer in the staff-on-platform sense. They've shipped systems, but they aren't a startup founder with an exit strategy. They've consulted, shipped accelerators, productized, presented, architected — usually some combination, often in long arcs at single companies. The job titles vary: solution architect, technical PM, presales engineer, integration consultant. The substrate is the same. They're the people who _connect_ things: legacy and new, vendor and customer, partner and product, business goal and working code.
+
+I'm one of them. I've been one of them since I wrote an EDI tracking and controls system on the Mainframe at Pennzoil in 1993.
+
+This blog has been mostly quiet for a while. The reason isn't that nothing was happening — it's that what was happening felt too large to write about while I was still figuring out what I thought. I'm starting to get a feel for what I think now and what's important to me, so the blog reopens.
+
+---
+
+The thing I've been figuring out is what AI does to people like _me_, specifically.
+
+When you read most takes on AI-native development, the implicit subject is a senior software engineer. Their relationship with AI is incremental: they were already a fast shipper, and now they're two or three times faster. The discourse around them is rich and well-articulated. Hot takes about model selection, agent orchestration, the future of the engineer role. There's no shortage of voices.
+
+But for the generalist-integrator, the math is different. We weren't velocity-bottlenecked because we were slow; we were velocity-bottlenecked because we knew _what_ needed to be built but couldn't always be the one to build it alone. Our craft was judgment, not throughput. We picked the right architecture, scoped the integration, sold the software (and/or engagement), then handed it off — or muddled through it ourselves, slowly, in the spaces between other commitments.
+
+AI collapses that gap. Not by making us two or three times faster than we were. By making us several times what we were, because the bottleneck wasn't where the bottleneck appeared to be. A presales engineer who can prototype during the demo meeting is not the same person they were a year ago. A solution architect who can stand up working integration scaffolding overnight is not in the same role description. Recently, in the final-validation gate on one of our accelerator submissions, a reviewer flagged that every Apache Camel routebuilder in our integration app needed to move to a different package before we could ship. A week of refactoring, touching everywhere those components are referenced. I turned it over to Claude and it was done in an hour.
+
+The discourse hasn't caught up to this yet. Most of the people for whom AI has been most transformative are too busy doing the new thing to write about doing the new thing.
+
+So this is me trying.
+
+---
+
+I have receipts, in the way that people who've been around for a while have receipts.
+
+I rolled out Microsoft's Systems Management Server (SMS) to 150,000 desktops across 18,000 locations for a Fortune 50 insurer in the late 1990s, when "rollout" still meant trucks. I picked up MCSE, MCSD, and MCT certifications in a single year, then spent the next twenty learning that certifications don't matter as much as you'd think. I shipped [an iOS app for warfarin patients](/blog/kfinder-published) in 2024 — solo, on the side, because I wanted to learn Swift and because I needed the tool to exist. I run a small LLC called Eclectic Development that has, until now, been mostly (ok, fully) aspirational. And for seventeen years, I built integration accelerators for SAP, Guidewire, and Duck Creek, learning along the way that nobody actually ships them — they're table-stakes for the RFP, not the integration that runs in production. Sales calls them "plug-and-play" anyway.
+
+I didn't list these things because they're impressive. Many of you reading this will have similar lists, and that's the point. The kind of writing I want to do is anchored in things I've actually done. The receipts are the shield. They're also the ground from which the patterns get observed.
+
+---
+
+What I'm doing now, mostly in spare hours, is building in public as a generalist becoming a builder.
+
+The first proof artifact is a small [MCP server](https://github.com/robertwtucker/para-vault-mcp) that exposes a [PARA-method](https://fortelabs.com/blog/para/) Obsidian vault as structured tools — capture an inbox thought, find the active project, get its next action, log to today's note, check daily review status. Five tools, deliberately small, MIT-licensed. It's the warmup, not the headline. The headline, eventually, is an integration discovery agent — the AI-native version of the work I've been paid to do for seventeen years. But you don't ship the headline first; you ship the warmup, so the headline has a place to land.
+
+Alongside that, I'm reviving KFinder with features I've wanted to add for years and never had the time for. Now I do, because AI does all the boilerplate stuff I never enjoyed. I'll write about that as it goes.
+
+The cadence here is one essay every two weeks, one short lab note per week. Cross-posted where it makes sense. No newsletter. No consulting page. No thought leadership™. I'm building for the next decade of work, where being a generalist is no longer a liability, but an edge.
+
+If you're another generalist-integrator who's been quietly doing this kind of work and waiting for the rest of the conversation to catch up: this blog is for you. If you're a senior engineer who reads this and finds it useful, that's a bonus.
+
+---
+
+Reserved and introspective is my default. I'm not going to try and project a personality I don't have. The Internet has plenty of voices already convinced of their own conclusions; I'd rather be one of the ones that admits when something didn't work, when I was wrong, or when the honest answer is "it depends" without spinning that into another framework.
+
+If you've read this far, the most useful thing you could do is tell me where I'm wrong — about the archetype, about the velocity claim, about anything. The second most useful thing is to tell me you're another one of us. Either way, I'd like to hear it.
+
+The lights are back on.
