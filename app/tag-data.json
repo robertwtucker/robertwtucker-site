@@ -1,5 +1,5 @@
 {
-  "ai": 2,
+  "ai": 3,
   "git": 2,
   "how-to": 3,
   "speaking": 3,
@@ -13,6 +13,5 @@
   "software-development": 1,
   "swift": 1,
   "generalist-integrator": 1,
-  "ai-practice": 1,
   "javascript": 1
 }
