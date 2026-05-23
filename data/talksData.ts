@@ -24,6 +24,14 @@ const talksData: Talk[] = [
       'Introduction to Inspire Scaler for the existing Inspire customer base — positioning, capabilities, and adoption path.',
   },
   {
+    title: 'FinovateEurope 2018 — main-stage demo',
+    venue: 'FinovateEurope, London',
+    year: '2018',
+    href: 'https://finovate.com/videos/finovateeurope-2018-quadient/',
+    description:
+      'Back for another seven minutes under the bell — demonstrating a different scenario for Quadient.',
+  },
+  {
     title: 'FinovateFall 2017 — main-stage demo',
     venue: 'FinovateFall, New York City',
     year: '2017',
