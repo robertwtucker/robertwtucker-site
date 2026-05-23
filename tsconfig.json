@@ -33,6 +33,12 @@
       "@/css/*": [
         "css/*"
       ],
+      "@/lib/*": [
+        "lib/*"
+      ],
+      "@/ui/*": [
+        "components/ui/*"
+      ],
       "contentlayer/generated": [
         "./.contentlayer/generated"
       ],
