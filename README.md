@@ -6,7 +6,8 @@
 
 This is the source repository for Robert Tucker's personal website at [https://robertwtucker.com](https://robertwtucker.com). It is:
 
-- Coded with [Visual Studio Code](https://code.visualstudio.com) in vim-mode on a Mac.
+- Coded with [LazyVim](https://www.lazyvim.org/) and occasionally
+  [Visual Studio Code](https://code.visualstudio.com) on a Mac.
 - Built using [Next.js](https://nextjs.org).
 - Hosted on [Vercel](https://vercel.com/home).
 
