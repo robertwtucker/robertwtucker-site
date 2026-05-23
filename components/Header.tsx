@@ -40,9 +40,9 @@ const Header = () => {
                 key={link.title}
                 href={link.href}
                 aria-current={isActive ? 'page' : undefined}
-                className={`hover:text-primary-700 hover:underline hover:decoration-1 hover:underline-offset-[6px] dark:hover:text-primary-300 m-1 font-medium ${
+                className={`hover:text-primary-700 dark:hover:text-primary-300 m-1 font-medium hover:underline hover:decoration-1 hover:underline-offset-[6px] ${
                   isActive
-                    ? 'text-primary-700 underline decoration-1 underline-offset-[6px] dark:text-primary-300'
+                    ? 'text-primary-700 dark:text-primary-300 underline decoration-1 underline-offset-[6px]'
                     : 'text-gray-900 dark:text-gray-100'
                 }`}
               >

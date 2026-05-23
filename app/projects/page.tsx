@@ -47,7 +47,7 @@ export default function Projects() {
           <ul className="divide-y divide-gray-200 dark:divide-gray-700">
             {talksData.map((talk) => (
               <li key={talk.title} className="flex flex-wrap items-baseline gap-x-3 py-3">
-                <span className="text-sm font-medium tabular-nums text-gray-500 dark:text-gray-400">
+                <span className="text-sm font-medium text-gray-500 tabular-nums dark:text-gray-400">
                   {talk.year}
                 </span>
                 <Link
