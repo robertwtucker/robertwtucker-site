@@ -14,18 +14,19 @@
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
   /* Colors */
-  /* Copied from https://tailwindcss.com/docs/theme#default-theme-variable-reference */
-  --color-primary-50: oklch(0.984 0.019 200.873);
-  --color-primary-100: oklch(0.956 0.045 203.388);
-  --color-primary-200: oklch(0.917 0.080 205.041);
-  --color-primary-300: oklch(0.865 0.127 207.078);
-  --color-primary-400: oklch(0.789 0.154 211.530);
-  --color-primary-500: oklch(0.715 0.143 215.221);
-  --color-primary-600: oklch(0.609 0.126 221.723);
-  --color-primary-700: oklch(0.520 0.105 223.128);
-  --color-primary-800: oklch(0.450 0.085 224.283);
-  --color-primary-900: oklch(0.398 0.070 227.392);
-  --color-primary-950: oklch(0.302 0.056 229.695);
+  /* Primary scale: muted slate-blue (hue 250). L values preserved from the
+     previous cyan scale so light/dark legibility is structurally unchanged. */
+  --color-primary-50: oklch(0.984 0.010 250);
+  --color-primary-100: oklch(0.956 0.020 250);
+  --color-primary-200: oklch(0.917 0.040 250);
+  --color-primary-300: oklch(0.865 0.060 250);
+  --color-primary-400: oklch(0.789 0.075 250);
+  --color-primary-500: oklch(0.715 0.070 250);
+  --color-primary-600: oklch(0.609 0.065 250);
+  --color-primary-700: oklch(0.520 0.055 250);
+  --color-primary-800: oklch(0.450 0.045 250);
+  --color-primary-900: oklch(0.398 0.035 250);
+  --color-primary-950: oklch(0.302 0.025 250);
 
   --color-gray-50: oklch(0.985 0.002 247.839);
   --color-gray-100: oklch(0.967 0.003 264.542);
