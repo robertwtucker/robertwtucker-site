@@ -3,7 +3,7 @@ const siteMetadata = {
   title: 'Eclectic Developer',
   author: 'Robert Tucker',
   headerTitle: 'Robert Tucker',
-  description: 'Ramblings of an eclectic developer',
+  description: 'Notes on AI-native development for the technical middle.',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://robertwtucker.com',
