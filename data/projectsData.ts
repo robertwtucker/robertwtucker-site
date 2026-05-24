@@ -19,6 +19,7 @@ const projectsData: Project[] = [
     description: `An open-source Model Context Protocol server that exposes a PARA-method
     Obsidian vault as structured tools for MCP-capable AI clients. The first proof
     artifact of an in-public AI practice. Building toward v0.1.`,
+    imgSrc: '/static/images/ai-para-mcp.jpg',
     href: 'https://github.com/robertwtucker/para-vault-mcp',
   },
   {
