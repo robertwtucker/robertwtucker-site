@@ -4,6 +4,7 @@ import { slug } from 'github-slugger'
 import siteMetadata from '@/data/siteMetadata'
 import Image from '@/components/Image'
 import Tag from '@/components/Tag'
+import DraftPill from '@/components/post/DraftPill'
 
 type PostHeaderProps = {
   title: string
@@ -47,11 +48,7 @@ export default function PostHeader({
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black/75" />
           <div className="absolute inset-x-0 bottom-0 space-y-4 p-6 text-white sm:p-8 md:p-10">
             <div className="flex flex-wrap items-center gap-x-2 text-xs font-medium tracking-wide text-white/85 uppercase">
-              {draft && (
-                <span className="rounded border border-amber-300 px-2 py-0.5 text-amber-200">
-                  Draft
-                </span>
-              )}
+              {draft && <DraftPill variant="banner" />}
               <time dateTime={date}>{formattedDate}</time>
             </div>
             <h1 className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">{title}</h1>
@@ -81,11 +78,7 @@ export default function PostHeader({
   return (
     <header className="space-y-5 pt-6 pb-8 md:pt-10 md:pb-10">
       <div className="flex flex-wrap items-center gap-x-2 text-xs font-medium tracking-wide text-gray-500 uppercase dark:text-gray-400">
-        {draft && (
-          <span className="rounded border border-amber-500 px-2 py-0.5 text-amber-700 dark:border-amber-400 dark:text-amber-300">
-            Draft
-          </span>
-        )}
+        {draft && <DraftPill variant="text" />}
         <time dateTime={date}>{formattedDate}</time>
       </div>
       <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl md:text-5xl dark:text-gray-100">
