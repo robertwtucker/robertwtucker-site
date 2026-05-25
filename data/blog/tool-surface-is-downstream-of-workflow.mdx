@@ -1,0 +1,31 @@
+---
+title: 'Tool surface is downstream of workflow'
+date: '2026-05-25'
+tags: ['ai', 'mcp', 'para-vault-mcp', 'lab-note']
+draft: false
+summary: 'I shipped one tool with a parameter. Eighteen hours later I split it into three. A day after that, I deleted one of the three. The lesson is that tool surface follows real use, not design.'
+---
+
+I shipped one tool that took a section name as a parameter. Eighteen hours later I split it into three. Then I deleted one of those three. The takeaway isn't that I changed my mind; it's that real use taught me something the design couldn't.
+
+---
+
+The tool was `log_to_today({section})`. A clean, parameterized API. One tool, three uses — write to _Captures_, write to _Work Log_, write to _Tasks_. It felt right on paper. Then I tried to use it.
+
+My fingers wanted three different verbs, not one verb with a parameter. The abstraction was at the wrong layer — perfectly aligned with the data shape ("a section of a markdown file") and didn't track the intent at all ("capture an idea" vs. "log work" vs. "complete a task"). Those aren't the same axis. The data-shape abstraction is what an engineer reaches for; the intent abstraction is the shape the workflow actually has.
+
+---
+
+I split it into `capture`, `log_work`, and `add_task`. Smoke-tested by asking for a summary "to the work log" (reversed phrasing) and it still routed to `log_work`. That's the actual signal. With the parameterized tool, that same phrase would have to be planned into a `{section: "Work Log"}` argument; with intent-named tools, the routing _is_ the integration.
+
+The trade-off is real: three tools is more surface area than one. Each tool is also unambiguous in a way the parameterized version wasn't. Tool names are prompts. Pick the layer where the LLM is doing the dispatch, not the layer where you, the author, are doing it.
+
+---
+
+A day later, I dropped the _Tasks_ section from my daily-note template. I realized it was never part of PARA — it was just getting carried forward by example from earlier daily notes. With the destination section gone, `add_task` had no workflow home. Removed it in a single atomic commit. The v0.1 surface is five tools, not six.
+
+---
+
+Tool surface is downstream of workflow. You can't design it in your head; you have to use it. A tool that no longer matches the workflow is dead weight even if it works. Pruning before the v0.1.0 tag costs next to nothing. Post-release, it's a deprecation cycle.
+
+[para-vault-mcp on GitHub](https://github.com/robertwtucker/para-vault-mcp).
