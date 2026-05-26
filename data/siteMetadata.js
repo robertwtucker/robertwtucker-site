@@ -16,6 +16,7 @@ const siteMetadata = {
   bluesky: 'https://bsky.app/profile/robertwtucker.com',
   linkedin: 'https://www.linkedin.com/in/robert-w-tucker',
   locale: 'en-US',
+  postsPerPage: 8,
   // set to true if you want a navbar fixed to the top
   stickyNav: true,
   analytics: {
