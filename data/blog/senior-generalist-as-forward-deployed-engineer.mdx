@@ -1,0 +1,73 @@
+---
+title: 'The senior generalist as Forward Deployed Engineer'
+date: '2026-06-03'
+tags: ['ai', 'fde', 'generalist-integrator']
+draft: false
+summary: 'Forward Deployed Engineer is having a moment. The discourse is missing a cohort that has been doing audit-integrate-deploy-stay work for twenty years. AI did not create the role. It unblocked us.'
+---
+
+The launch essay called the archetype a "senior technical generalist." A trusted reader pushed back: that framing is true but soft. There's a sharper name for it, and the name is having a moment.
+
+The name is Forward Deployed Engineer.
+
+A year ago you wouldn't have seen it on most résumés. Now: OpenAI has spun up a unit called The Deployment Company. Anthropic's Applied AI group is growing. Google Cloud is embedding FDEs with Vertex AI customers and writing LinkedIn posts about the named individuals doing the work. Job postings for the role jumped roughly 800 percent between January and September 2025. Mid-level total comp at the top labs runs roughly \$350K–\$450K, with staff-level higher still. Microsoft, AWS, Databricks, Salesforce, and Scale are building the same function under their own banners.
+
+The role exists because of [a number that's now been cited often enough to be load-bearing](https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo/): about 95 percent of enterprise AI pilots produce no measurable impact on profit and loss. The failure is almost never the model. It's the last mile inside a real company — the data nobody trusts, the legacy system nobody documented, the workflow that's actually run by one person in finance who knows why it has to work that way. The labs figured out that the bottleneck wasn't in the lab, so they started sending engineers to live where the bottleneck is.
+
+That's the role.
+
+---
+
+There are at least two camps already trying to define what it means.
+
+One camp is the recruiter-builder view, sharpest in a [recent thread](https://x.com/vasuman/status/2057177266984226892): FDE is an emerging role you can credential into. They lay out a thirty-day plan — read Anthropic's _Building Effective Agents_, build an agent, build a RAG pipeline, build an eval framework, build an MCP, learn to talk to a non-technical VP. It's a real plan. Someone following it could get hired.
+
+The other camp is more skeptical, sharpest in a [recent post by Andreas Horn](https://www.linkedin.com/posts/andreashorn1_the-most-contested-job-title-in-ai-right-share-7465268982124707841-kfxG/): "The title is being copied faster than the practice." A lot of people are putting "Forward Deployed" on their résumé. The rebrand is loud right now. That does not change what the actual job is.
+
+Both are right about what they're looking at. The first describes a real path in. The second describes a real boundary worth holding.
+
+There's a third thing neither camp is naming, and it's the thing I want to write about.
+
+---
+
+The role's three current shapes — Forward Deployed Engineer at the AI labs, integration orchestrator at vendors and partners, enterprise technical operator inside Fortune 100s — are three vantage points on roughly the same person.
+
+The FDE sits next to the customer and ships in their environment. The integration orchestrator has spent twenty years scoping how the systems are supposed to fit together and handing the implementation off to engineering teams that couldn't always get to it in time. The enterprise technical operator is the one inside the customer's walls who can read code, run a Kubernetes cluster, and present to a CIO in the same week. Different titles, different employers, same operational shape: someone who lives at the seam between business problem and working system, and is measured by whether the thing keeps working after handoff.
+
+Until very recently, only one of those three could ship without an engineering team behind them. AI collapses that. Now, the other two can, too.
+
+---
+
+Here's where Horn's bar matters. Practice over title. The title is being copied; the practice is what counts.
+
+The technical justification for the role is well argued and I won't relitigate it. AI is probabilistic. Models drift. Evals fail in ways staging didn't catch. Ownership fades exactly when the system needs hands-on attention. Someone has to live in the last mile. Fine.
+
+The piece that's missing from the current discourse is demographic. The last-mile work isn't new. Customer communication management, ERP integration, insurance core systems, claims platforms — the people doing this work have been doing it for two decades. They've known what to build for almost as long. The constraint was elsewhere, and I've written about that elsewhere, too.
+
+What changed isn't the practice. AI doesn't create the role. It unblocks the people who were already doing it.
+
+There's a secondary point worth naming. Every lab and cloud is now building its own FDE corps gated on its own stack — Google's role description is more than half GCP-specific. The Anthropic and OpenAI versions almost certainly gate on their own stacks the same way. That gating makes sense for the labs. It also makes the underlying practice look newer than it is. Audit-integrate-deploy-stay has been ecosystem-agnostic for thirty years.
+
+Push that further. The FDE buildout from the labs — and the credentialing pipelines training people into it — is at least partly a services play wearing engineering's clothes. The labs need revenue stickiness and a moat that isn't just model quality; embedded engineers deliver both. The recruiter-builder camp is selling a credential into that demand. Neither is wrong about the underlying work being real. But both have a structural interest in the title reading as _new_, because new is what they sell. The cohort that has been doing the practice has the opposite interest, and no product to push. We can just point at the practice.
+
+---
+
+Receipts. Horn is right that the title is being copied faster than the practice. Here are some of mine.
+
+From roughly 2007 onward at HP Exstream, I built integration accelerators for a product company — an RDI format reader for SAP certification, then a multi-year line against Guidewire InsuranceSuite v6 through v8. Scope the integration shape, build it once, package it to survive contact with many customers' environments. Nearly a decade of that on my résumé. Most of you reading this will have something analogous on yours.
+
+Recently, working solo on an MCP inside the day job, I took the server from scope to demo-ready in roughly three working-day-equivalents of focused contact time — spread across about two calendar weeks. Scoping conversation, design doc, TDD-driven implementation, code review, schema audit, smoke tests into CI, demo-quality artifact at the end. Pre-AI, the same scope would have been a multi-week engagement with at least one other engineer.
+
+I'm not going to claim the multiplier — the honest comparison is messy and depends on what you're counting. What I will claim is that the _underlying problem_ is the one I was scoping a decade and more ago. Different operating mode (one server this time, not a packaged accelerator for many), but the shape of the work — scope, design, build, ship, support — is recognizable. The throughput isn't. That gap is the entire essay.
+
+---
+
+The window where "senior technical generalist becomes builder" is genuinely open is short.
+
+The labs are defining the title in real time. The recruiter pipelines are training a new cohort into it from scratch on thirty-day plans. The skeptics are policing the boundary, correctly, against the loud rebrand. None of those three forces is paying much attention to the cohort that has been doing this work for two decades and now has the throughput to ship.
+
+That cohort doesn't need to credential in. We don't need permission from the labs. We need to claim the label that fits work we've been doing long enough to have receipts for, and we need to demonstrate the practice in public so the title and the work don't drift further apart than they already have.
+
+Horn's closing line is the right one to echo. The dominant hiring pattern at the frontier labs is no longer model researcher. It is the person who makes the model survive contact with reality.
+
+Some of us have been making things survive contact with reality for thirty years. The label is new. The work isn't.
