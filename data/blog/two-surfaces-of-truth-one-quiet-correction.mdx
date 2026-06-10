@@ -1,0 +1,37 @@
+---
+title: 'Two surfaces of truth, one quiet correction'
+date: '2026-06-10'
+tags: ['ai', 'mcp', 'para-vault-mcp', 'lab-note']
+draft: false
+summary: "I asked my own MCP a routine question and it caught me lying to myself. The thing worth writing about isn't that the MCP worked — it's which thing it got right."
+---
+
+Dogfooding `para-vault-mcp` against my production vault. The prompt was unremarkable:
+
+> what's the next action on the [redacted] project?
+
+The agent didn't just read the answer off the page. The `next-action` field in the project frontmatter pointed at item X. Item X was already checked off in the Prep section ten lines below. The agent noticed the disagreement, identified the _real_ next action from the unchecked items, flagged the tight two-day window I'd left myself, and offered to fix the stale frontmatter. I said yes; it did.
+
+![para-vault-mcp catching a stale next-action field](/static/images/para-vault-mcp-staleness.png)
+
+---
+
+The thing worth writing about isn't "the MCP worked." It's _which_ thing it got right.
+
+It detected a disagreement between two surfaces of truth in my own system — frontmatter vs. checklist — and resolved it correctly. It read the situation, not just the file. "Tight window, decide now whether to nudge Sunday or Monday" is peer behavior, not search-engine behavior.
+
+---
+
+The judgment that made the difference — _when the frontmatter and the checklist disagree, the checklist wins_ — isn't in a prompt. It's in how the tools are shaped. The MCP's five tools are deliberately small, and each one knows where the ground truth lives for the question it answers. The deliberateness is the value.
+
+That rule came from a few months of refining PARA conventions in practice. The checked list is what I actually trust day to day; the frontmatter is a cache of it that drifts when I'm moving fast. Until this prompt, the rule lived in my head. After it, the agent applied it on my behalf.
+
+That's the part I'd been waiting for: the first time the judgment surfaced _to_ me instead of _from_ me.
+
+---
+
+What gets added next: the same staleness check, but proactive — sweep the project shells nightly and flag any disagreements before I ask.
+
+A small coda. The project named in that prompt got archived today — `status: shipped` — which is itself the kind of close-out the same agent now reminds me to do.
+
+[para-vault-mcp on GitHub](https://github.com/robertwtucker/para-vault-mcp).

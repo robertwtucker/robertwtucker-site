@@ -1,5 +1,5 @@
 {
-  "ai": 4,
+  "ai": 6,
   "git": 2,
   "how-to": 3,
   "speaking": 3,
@@ -12,9 +12,10 @@
   "ios": 1,
   "software-development": 1,
   "swift": 1,
-  "mcp": 1,
-  "para-vault-mcp": 1,
-  "lab-note": 1,
-  "generalist-integrator": 1,
+  "fde": 1,
+  "generalist-integrator": 2,
+  "mcp": 2,
+  "para-vault-mcp": 2,
+  "lab-note": 2,
   "javascript": 1
 }
