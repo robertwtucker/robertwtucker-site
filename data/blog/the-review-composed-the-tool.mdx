@@ -1,0 +1,35 @@
+---
+title: 'The review composed the tool'
+date: '2026-06-16'
+tags: ['ai', 'mcp', 'para-vault-mcp', 'lab-note']
+draft: false
+summary: "Two of para-vault-mcp's tools just absorbed three Bash ops I was running every evening to start the daily review. The shape they took came from the review, not the vault."
+---
+
+The opener was always the same four commands.
+
+`ls 0-Inbox/`. `grep -l "^status: active" 1-Projects/*/_project.md`. A second grep against `updated:` to find stale projects. Then `ls -t` on the agent-memory folder. Four shell commands of friction before the actual review could start. Each one a permission prompt to click through.
+
+Each of those calls was a single primitive. The instinctive reaction — wrap each one in its own MCP tool — would be the wrong move. What the daily review actually wanted wasn't "list the inbox" and "find active projects" as separate surfaces. It wanted _the opener_, composed.
+
+v0.3 expanded the two tools that were already in the right place. `find_project` gained `status`, `area`, `stale_days`, `updated_since`, `sort`, and `limit` — the parameters a review-shaped question actually needs answers to. `daily_review_status` lifted the inbox items, the previous daily-note path, and the end-of-day checkbox state into a single response. Three of the four Bash ops became two typed calls.
+
+---
+
+What gets added next: seven follow-ups for v0.4, filed from a high-effort code review run against the PR before merge.
+
+The release itself was the first live exercise of `npm publish --provenance` via OIDC trusted publishing — the path I wired up in v0.2 but hadn't had a version to ship until now. Clean run.
+
+---
+
+I ran last night's review with the new tools. Reconciliation surfaced a meeting that had been scrapped earlier in the day and pulled the project's `next-action` into sync — same skill, fewer permission prompts in front of the actual work. The signal-to-friction ratio shifted.
+
+---
+
+The pattern worth naming: the tool surface stopped tracking _what data does the vault have_ and started tracking _what does a workflow actually need._ The first framing produces a thin wrapper over the filesystem. The second produces parameters you'd want even if the storage were Postgres.
+
+---
+
+The discipline that kept the new surface clean was knowing when to _refuse_ a parameter. The original spec for the daily-review tool included a fourth field — the path to my most recently touched agent-memory file. Useful to me. Also entirely me-shaped: agent memory lives under a folder convention only I use. Shipping it would have meant a config knob that returns `undefined` for every other vault. The Bash op stays on my side of the line. The tool ships only the substrate every PARA practitioner would recognize.
+
+[para-vault-mcp on GitHub](https://github.com/robertwtucker/para-vault-mcp).
