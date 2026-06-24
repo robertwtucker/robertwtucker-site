@@ -1,7 +1,9 @@
 {
-  "ai": 7,
+  "ai": 8,
   "git": 2,
   "how-to": 3,
+  "presales": 1,
+  "generalist-integrator": 3,
   "speaking": 3,
   "quadient": 5,
   "fintech": 1,
@@ -13,7 +15,6 @@
   "software-development": 1,
   "swift": 1,
   "fde": 1,
-  "generalist-integrator": 2,
   "mcp": 3,
   "para-vault-mcp": 3,
   "lab-note": 3,

@@ -1,0 +1,73 @@
+---
+title: 'Compensation tells you what your job actually is'
+date: '2026-06-24'
+tags: ['presales', 'generalist-integrator', 'ai']
+draft: false
+summary: "Twenty years ago, a manager told me the fix I'd written to save a deal was a mistake. He wasn't wrong about the system — but my comp plan paid on closes, and the comp plan is the contract that tells you what your job actually is."
+---
+
+The proof point was a file: a few hundred of the customer's own records, run through the engine on day three to generate documents that were both correct and rendered fast enough.
+
+I was a POC Manager at Exstream Software, on site for a proof of concept. The motion was one every presales org runs: our engineer sat with the customer and built their sample document from scratch, feature by feature — part demo, part de-risking exercise, all of it pointed at the day-three proof point on their data.
+
+Hit it, and the deal kept moving. Miss it, or do it with sample data, and nothing dramatic happened that afternoon. The deal would start to cool. We'd promise a solution "as part of the implementation," the customer's enthusiasm would settle into a follow-up that never quite got scheduled, and three months later it was a POC that didn't convert.
+
+Then we hit the wrinkle. The customer's XML feed wrapped chunks of its payload in `<![CDATA[...]]>` sections. That data needed reformatting at ingestion before the engine could compose against it. Exstream Dialogue didn't handle that shape out of the box. No checkbox, no config flag. On the customer's actual data, the clean path we'd been demoing suddenly wasn't.
+
+---
+
+Here's the part my manager and I would later disagree about.
+
+Dialogue had a plugin contract: API hooks built precisely for custom behavior at various points in the composition process (reading the input record, in this case). A C-style interface you implemented and wired in through INI configuration. It existed for exactly this. So while our presales engineer kept the customer engaged in the document build, I wrote the DLL on the side. Built it, configured it, dropped it into the runtime path between iterations of the demo. When we ran the day-three proof point on the customer's real file, the output was correct and the throughput held.
+
+The customer never saw the scramble. They saw a product that handled their data.
+
+---
+
+Back at the office, my manager pulled me aside. The fix was a problem.
+
+His framing was clean: my job as POC Manager was to deliver the POC and make a clean handoff to whatever came next in the buy cycle. The DLL I'd written was now a thing that existed. Custom code attached to this specific deal, which someone would have to understand and support through the rest of the sales process and possibly beyond. I'd bound myself, and the company, to a one-off the team's architecture wasn't built to carry.
+
+And he wasn't wrong. A POC organization that scales is one where engineers don't write bespoke C/C++ in customer engagements, because every one of those becomes a long-tail support obligation nobody budgeted for. Multiply my DLL across a dozen POC managers and you have a maintenance surface no one owns and a sales motion quietly promising customizations as if they were product. His job was to protect against that. He was managing a system.
+
+---
+
+My counter came out before I'd really thought it through, which is usually when I find out what I actually believe.
+
+"You pay me for every deal that closes. So my job is to do whatever it takes to get the prospect to agree to buy the product."
+
+My comp plan paid on closes. Not on POCs cleanly delivered, not on handoffs executed, not on support surface kept tidy. Closes. If the engagement converts, I'm paid; if it cools into a polite no, I'm not. Told to leave the close on the table for the sake of the team's process — while still being measured and paid on closes — I was being asked to lose my own money to make the org's life easier. The plan I'd been handed rewarded the exact behavior I was being chewed out for.
+
+If the company wanted different behavior, the lever was right there. Change the comp plan. Pay me on clean handoffs and I'll optimize for clean handoffs. Pay me on closes and I'll write the DLL every time.
+
+---
+
+That conversation is twenty years old now, and I think about it more than almost anything else from that decade — because it taught me which signal to read first.
+
+A job description is a frozen artifact. HR writes it, someone approves it, and it sits in a drawer describing a role that may or may not still exist. A comp plan is an operating contract: renewed and re-negotiated every year, with real money behind every clause. When the two disagree (eventually, they always do), the comp plan is the one telling you the truth. It's what the company will actually reward you for, whatever the description says you're "responsible for."
+
+Read the comp plan first. The job description second. Where they diverge is where the real work lives.
+
+And it generalizes past presales, cleanly, everywhere I've looked since:
+
+- The sales rep comped on regional ARR will pre-sell features that haven't shipped, no matter how many times product asks them not to.
+- The CSM comped on retention will quietly route hard renewals to the AE, no matter that "customer success" is in the title.
+- The engineer comped on individual PRs will under-invest in shared platform work, no matter how much "platform thinking" the rubric claims to value.
+
+None of those people are behaving badly. They're reading the contract that has money behind it and responding rationally. If you don't like the behavior, the bug is in the plan, not the person. Yelling at the symptom is just yelling.
+
+There's a particular edge to this for generalists. Comp plans are written for narrow roles (one lane, one number), and generalists make their living routing around lanes to do the thing that actually closes, ships, or unblocks. Which means we routinely do high-leverage work the plan doesn't pay for. When that happens, there are only two honest moves: get the plan changed to recognize the work, or accept that you're subsidizing the org and decide whether what you're learning is worth the trade. What you don't get to do is pretend the gap isn't there. The comp plan already told you.
+
+---
+
+One more turn, because the gap is wider now, not narrower.
+
+The DLL took me the better part of a day under pressure, twenty years ago. The 2026 version of that move (a small data-shaping plugin written mid-engagement to make a customer's real data behave) is twenty minutes with an AI assistant in the loop. Which means the behaviors a comp plan rewards but a job description never authorized just got dramatically cheaper to perform. The thing I had to be a little reckless to pull off in a conference room is now well within reach of anyone with the judgment to see the gap and the comp plan to justify crossing it.
+
+The disciplined orgs will tighten their plans to reward the new behavior on purpose. Most won't, because rewriting a comp plan is politically expensive and the friction of leaving it alone always feels smaller than the friction of changing it — right up until someone routes around it. The window where an individual can quietly out-deliver an outdated plan is open, and I suspect it opens wider before it closes.
+
+---
+
+My manager was paid to keep the team scalable. I was paid to close the deal. Both of us were doing our jobs.
+
+The DLL shipped.
