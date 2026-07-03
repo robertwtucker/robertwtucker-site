@@ -1,0 +1,57 @@
+---
+title: 'Make the silence loud'
+date: '2026-07-03'
+tags: ['ai', 'mcp', 'para-vault-mcp', 'lab-note']
+draft: false
+summary: 'A find_project query returned an empty array, and the LLM confidently told the user they had nothing — while four projects sat invisible behind one line of unquoted YAML. v0.4 of para-vault-mcp is about silences: wrong-but-confident answers, and the review discipline that fixes them even below the public bar.'
+---
+
+_A para-vault-mcp lab note. The third in a series — predecessor: [The review composed the tool](/blog/the-review-composed-the-tool). Each release of the tool ships against a discipline; this one is about silences._
+
+A user asks `find_project({area: 'Integration'})`. The tool returns `[]`. No error. No warning. The LLM consuming the response tells the user, confidently, that they have nothing in Integration.
+
+The user has four Integration projects.
+
+The bug is one line of YAML: `area: [[Integration]]`. Unquoted. js-yaml's flow-sequence parser reads `[[...]]` as a single-element nested array containing a string — not as a string. The tool's `typeof === 'string'` check rejects it. The field becomes `undefined`. The filter finds nothing. The response is `[]`. Every Integration project is invisible to the query.
+
+This isn't a crash. There's no stack trace, no error field, no signal anywhere. It's a _silence_ — a wrong-but-confident answer that propagates downstream into recommendations, summaries, decisions. The LLM treats `[]` as evidence. The user makes plans based on what the tool didn't say.
+
+v0.4 of `para-vault-mcp` was about silences. It ships as [`@robertwtucker/para-vault-mcp@0.4.0`](https://github.com/robertwtucker/para-vault-mcp/releases/tag/v0.4.0): eight bug fixes, two performance wins, two security clusters. Each release targets a discipline. v0.3 was _the review composed the tool_ — design tools to fit the workflow, not to track the data shape. v0.4 extends that discipline downward, into the silent paths the v0.3 ship left behind.
+
+There were several:
+
+- A _wikilink alias_ (`[[Areas/Health|Health]]`) — the user literally writes "Health" on the right side of the pipe — didn't match a query for "Health" because the normalizer just stripped brackets and lowercased, yielding `areas/health|health`.
+- A timestamp with a TZ offset (`updated: 2026-06-30T20:00:00-08:00`) got UTC-sliced. js-yaml parsed it to the instant `2026-07-01T04:00:00Z`. The tool reported July 1. The user wrote June 30.
+- A typoed date (`updated: 2026-13-45`) silently rolled over via JavaScript's `Date` constructor to `2027-02-14`. The project then matched (or didn't match) staleness filters at the rolled-over date, with no signal anywhere that the value was junk.
+
+In each case the tool was confidently wrong. The fix wasn't to add validation in front of the tool — the LLM consumer can't validate frontmatter shapes the user wrote. The fix was to make the tool stop returning confident answers it couldn't back up.
+
+Wikilink aliases now collapse to the alias text. Timestamps with offsets use the raw YAML scalar's first ten characters, sidestepping the UTC-slice problem. Typoed dates round-trip-validate, and invalid values surface in a new `dateErrors` field on the response — the project still appears in unfiltered results, with the bad value named, so the LLM can flag it instead of pretending the date is fine.
+
+That last piece — surfacing the error instead of swallowing it — was the key takeaway. The tool's job isn't to hide what it can't parse. It's to refuse the wrong answer and name what it doesn't know.
+
+But this post isn't really about the bugs. It's about something I noticed while shipping the fixes.
+
+I'd set up a code-review pass on every PR with a confidence-scoring step at the end: only findings above 80 got posted as public PR comments. On one particular PR, five findings scored 50-75: real issues, below the public bar. The instinct was to file them as a v0.5 cleanup and ship. Then I caught the disconnect: the 80 bar tells you whether a finding is worth posting, not whether it's worth fixing. When the release theme is _making silences loud_, a silence at confidence 50 is still the theme's obligation, and shipping a silence-fixing release with a known residual silence in the same code path is incoherent.
+
+Here is the moment that landed it.
+
+The release-prep PR for v0.4 included a refreshed CHANGELOG and README. I'd written, in the Fixed section of the CHANGELOG:
+
+> impossible dates in frontmatter no longer roll over silently via `new Date()`; the project still appears in results but the bad value surfaces in the new `dateErrors` field
+
+Reasonable. But the README, in a separate paragraph I'd also drafted, said:
+
+> Frontmatter date values that don't parse (e.g. `2026-13-45`) surface in the per-project `dateErrors` array on the response so the caller can flag them rather than silently dropping the project from staleness filters.
+
+Read it again. _Rather than silently dropping._ That frames the new behavior as the alternative to silent dropping. But the old behavior — the one v0.4 fixed — was the opposite: silent _inclusion_ via rollover. The new behavior IS dropping, accompanied by the loud `dateErrors` signal. The README accidentally narrated the silence backwards.
+
+Code review caught it. Confidence 90.
+
+I posted that one publicly. Above the bar.
+
+The release about silences had inverted the direction of the silence in its own documentation. A silence about silences, self-similar all the way down.
+
+That was the moment I stopped treating the 80-confidence bar as the line where the review's job ends. It's the line where the comment posts. The fix is downstream of the find, not downstream of the score.
+
+The CHANGELOG is honest about the `dateErrors` direction now. The discipline I'm keeping going forward: when the tool can't back up its answer, refuse the answer and name what's missing. When the review finds something below the public bar in a release whose theme says the bug matters, fix it anyway. The bar tells you whether to post. The theme tells you whether to ship.
