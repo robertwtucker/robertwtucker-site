@@ -1,0 +1,43 @@
+---
+title: "Stale state can't hide"
+date: '2026-08-04'
+tags: ['ai', 'mcp', 'para-vault-mcp', 'lab-note']
+draft: false
+summary: 'My daily review ran clean against a version of my day that was hours out of date. The tool had handed back a path to the note instead of the note, and a path is an invitation to skip the read. v0.5 of para-vault-mcp is about freshness: make the tool defeat the cache instead of asking the caller to remember.'
+---
+
+_A para-vault-mcp lab note. The latest in a series — predecessor: [Make the silence loud](/blog/make-the-silence-loud). Each release ships against a discipline; this one is about freshness._
+
+Every evening I run a daily review with an agent. It reconciles my inbox against my active projects, surfaces what's drifted, and tells me what to work on tomorrow. The first thing it calls is a tool named `daily_review_status` — the one that opens the whole workflow.
+
+One evening, it opened the workflow on a cached version of the daily note it had read earlier that day.
+
+I'd spent the majority of the day editing that day's daily note directly from my work computer: a meeting log, a long product-model investigation, a handful of inline watch-item resolutions. Real state, written to disk, synchronized across machines. But the agent already had a copy of that note in its context from earlier — and it reconciled against the copy. It missed every one of my live edits and reported, with complete confidence, a picture of my day that was several hours out of date.
+
+Nothing errored. The reconciliation ran clean. It was just clean against the wrong reality.
+
+---
+
+Here's the part that took me a minute to see. `daily_review_status` didn't hand back my daily note. It handed back a **path** to it — `dailyNotePath`, `previousDailyNotePath`. Pointers. And a pointer is an invitation to skip the read. The agent had a plausible copy already; the tool didn't insist on a fresh one; so the fresh read quietly didn't happen. The indirection was the crack the staleness hid in.
+
+That's the whole lesson, and it generalizes past this one tool: **stale state hides behind a reference.** A reference is a stand-in for reality — cheap to pass around, and free to diverge from the thing it points at. A file path is one kind of reference. So is a summary field.
+
+I learned the second kind the same week, from a different failure. A project's `next-action` — a field meant to hold the one concrete thing to do next — had quietly swollen into a running status log and gone stale, still announcing yesterday's plan while the log right below it had already moved on. Same shape as the daily-note miss: a reference that was supposed to reflect reality had drifted from it, because keeping a stand-in current is a discipline, and disciplines lapse. That one earned its own note — still marinating in my backlog — so I'll leave it there and stay on the tool.
+
+Because the tool is where you can actually fix this. You can't ask a caller to _remember_ to re-read. Discipline is exactly what failed.
+
+---
+
+v0.5 of `para-vault-mcp` — [`@robertwtucker/para-vault-mcp@0.5.0`](https://github.com/robertwtucker/para-vault-mcp/releases/tag/v0.5.0), shipped August 1 — makes freshness structural instead of remembered. `daily_review_status` grew two opt-in booleans, `include_body` and `include_previous_body`. Ask for them and the tool reads the current bytes off disk and returns the daily-note body inline, right there at the chokepoint the review always passes through. No pointer to maybe-follow. The live note is _in_ the response, so the cache-miss failure mode isn't a discipline anymore — it's structurally out of reach.
+
+Two details matter more than they look. First, the body is read fresh on every call; the tool holds no copy of its own, and a test mutates the note between two calls to prove the second call sees the change. If the tool cached, it would just be a slower version of the same bug. Second, the read is bounded — 128 KB, UTF-8-safe — and when it truncates it says so, with a `truncated: true` flag rather than silently trimming. That's the same discipline v0.5's predecessor was about: when the tool can't hand back the whole truth, it names what it left out instead of pretending it's complete. Freshness and honesty turn out to be the same move from two angles.
+
+---
+
+The frame I keep coming back to: **the vault is the source of truth; the agent's context is a cache; the tools should defeat the cache.** A cache is wonderful until it's wrong, and a cache that's wrong without saying so is exactly the silent-but-confident failure this whole project keeps circling. v0.4 caught tools that returned confident answers they couldn't back up. v0.5 catches tools that return _old_ answers they can no longer back up. Same disease, staler symptom.
+
+Every one of these releases has been taught to me by dogfooding my own MCP. I didn't design `include_body` from a whiteboard; I designed it from an evening where my agent and I confidently agreed on a version of my day that had stopped being true. The vault knew. The tool just hadn't been built to insist on asking it.
+
+Now it insists.
+
+[para-vault-mcp on GitHub](https://github.com/robertwtucker/para-vault-mcp).
