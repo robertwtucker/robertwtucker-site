@@ -1,0 +1,51 @@
+---
+title: 'The pointer we turned into a log'
+date: '2026-08-16'
+tags: ['ai', 'mcp', 'para-vault-mcp', 'lab-note']
+draft: false
+summary: "The next-action field in a project's frontmatter is supposed to be an executable pointer, two or three lines. Mine grew to 5,600 characters — added to a little at a time by my own agent, every single addition reasonable — until it went stale a full day behind the log sitting right below it. Co-maintained systems fail in ways neither party produces alone."
+---
+
+> _A companion to [Stale state can't hide](/blog/stale-state-cant-hide). That one was about a tool that handed back a pointer. This one is about a field my agent and I broke together._
+
+The daily review pulled up a work project and showed me its next action. The field was dated the 22nd. Three entries down in the same file, the log I keep for that project already had three entries dated the 23rd.
+
+The field whose entire job is to tell me what to do next was telling me what I had been doing yesterday.
+
+---
+
+`next-action` is supposed to be an executable pointer. One physical thing. The whole payoff of writing it down is that the deciding already happened, so when I open the project, I act instead of reading the file to work out where I am.
+
+This one had grown to about 5,600 characters. Dated history, hypotheses I had already ruled out, a couple of superseded notes that should have already been cleared. Somewhere along the way, it had quietly taken a second job: current-state summary.
+
+In the companion post, I wrote that stale state hides behind a reference, and that a file path is one kind of reference while a summary field is another. This is the second kind — the one I said I would come back to.
+
+---
+
+Here is the part I did not expect. I did not write those 5,600 characters. Not in one sitting, and definitely not by hand.
+
+My agent wrote them, a little at a time, across weeks of daily reviews. Every single addition was reasonable. When something moved on that project, the agent put the change where I would see it, and the place I would see it was the field my own tooling surfaces first. Ask an agent to keep you informed and it will optimize for the surface you actually look at. That is correct behavior. It is also how a pointer becomes a log.
+
+A human alone would never have written a 5,600-character next action. You feel the absurdity somewhere around the fourth line and you stop. An agent alone would never have noticed the staleness, because re-reading the whole field costs it nothing. A wall of text and a single line are the same to it.
+
+So the failure needed both of us. I supplied the tolerance for a field I had stopped genuinely reading. The agent supplied the volume. Each of us optimized correctly for our own constraints, and the thing that broke lived in the gap between the two optimizations.
+
+**Co-maintained systems fail in ways neither party produces alone.**
+
+---
+
+What makes this worse than ordinary drift is that the bloat manufactured it. A short field is cheap to rewrite, so it gets rewritten. A 5,600-character field is a chore, so it gets appended to instead, and appending is exactly what let the top of it go stale while the bottom kept growing. The richer the field got, the more it cost to keep true, and the further behind reality it ran.
+
+Because it is also the field the review reads first, the drift landed precisely where the review existed to catch it.
+
+A field serving two masters decays toward whichever job you can skip. Nobody notices a status summary that is a day behind. A stale pointer is wrong the moment you read it, but only if it stayed short enough to read.
+
+---
+
+The fix is unglamorous: give each job its own home. The pointer stays two or three lines. Current state moves to a callout at the top of the project. Dated history goes to the log, which is append-only and therefore cannot go stale on its own. What I was after is a field that cannot lie, because it no longer holds anything the log holds.
+
+There is a diagnostic hiding in this too. When I cannot compress the next action down to a couple of lines, it usually means I do not have one. The project is blocked, or it is waiting on a decision I have not made, or it was never scoped properly. Each of those has a real action attached: name the wait, make the decision, do the scoping. Bloat is what hides that signal. A field with 5,600 characters in it always looks like progress.
+
+I wrote the rule into my vault conventions the same day and trimmed four projects to match. The one that started this now reads as a single line.
+
+A next action is a promise you make to your future self, and now to your agent as well. Keep it a promise, not a diary.
