@@ -149,6 +149,9 @@ export const Authors = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: 'data',
+  // tsconfig has no `baseUrl` (deprecated in TS 6); this config uses no import
+  // aliases, so Contentlayer's alias-resolution warning does not apply.
+  disableImportAliasWarning: true,
   documentTypes: [Blog, Authors],
   mdx: {
     cwd: process.cwd(),

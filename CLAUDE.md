@@ -9,6 +9,7 @@ This file provides guidance to Claude Code when working with code in this reposi
 pnpm dev          # Start dev server (uses cross-env INIT_CWD=$PWD)
 pnpm build        # Build for production (contentlayer2 build → next build → postbuild RSS)
 pnpm serve        # Start production server
+pnpm typecheck    # contentlayer2 build + tsc --noEmit (CI runs this before the build)
 pnpm lint         # Run ESLint with auto-fix (paths configured in package.json)
 pnpm analyze      # Bundle analyzer (sets ANALYZE=true)
 ```

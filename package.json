@@ -8,6 +8,7 @@
     "build": "contentlayer2 build && cross-env INIT_CWD=$PWD next build && cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/postbuild.mjs",
     "serve": "next start",
     "analyze": "cross-env ANALYZE=true next build",
+    "typecheck": "contentlayer2 build && tsc --noEmit",
     "lint": "eslint --fix app components layouts scripts",
     "prepare": "husky"
   },
