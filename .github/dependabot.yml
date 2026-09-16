@@ -4,6 +4,13 @@ updates:
     directory: /
     schedule:
       interval: monthly
+    ignore:
+      # katex is a stylesheet delivery mechanism here, not the renderer.
+      # rehype-katex@7 hard-pins katex ^0.16.0 as a regular dependency, so
+      # bumping the root copy only skews katex.css against 0.16 markup.
+      # Revisit per the triggers in issue #297.
+      - dependency-name: katex
+        versions: ['>=0.17.0']
   - package-ecosystem: github-actions
     directory: /
     schedule:
