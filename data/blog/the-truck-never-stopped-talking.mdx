@@ -1,0 +1,83 @@
+---
+title: 'The truck never stopped talking'
+date: '2026-10-09'
+tags: ['ai', 'generalist-integrator', 'para-vault-mcp']
+draft: false
+summary: "I borrowed a friend's beat-up pickup to empty a storage unit, and drove a stick shift for the first time since 1993. Back in my automatic afterward, my attention wandered off inside 4 minutes. The truck never stopped telling me what it was doing, and that turned out to be the same thing two of my releases this summer were about: a tool that reports its state while the work happens."
+---
+
+It's been nearly 2 months since the last post here. We spent September moving.
+
+That's the whole explanation. One line, and now I'll get on with it.
+
+The part worth writing about happened before any of that, back in August. Step one of the move was emptying a storage unit. Years of things we'd paid monthly to avoid looking at. 2 weekends of hauling what we wanted back to the house, and sending the rest to the dump.
+
+A friend's husband lent me his truck for the job. An old red Mazda B2200, no working AC, and a list of quirks he walked me through in the driveway like a man handing off a difficult pet. "It likes to shift at 2500 when it's cold, and that'll move toward 3000 once it's warm." Standard 5-speed.
+
+I hadn't driven a stick since 1993.
+
+It came back fast. A few minutes of lurching around on the way to the storage lot while I hunted for the friction point, and then my left foot just knew.
+
+People say it's like riding a bike. They're right about the speed of it. By the second load, I was downshifting into the turn onto our street without deciding to.
+
+Then the first weekend was over, and I got back into my own car. Automatic. About 7 minutes into a familiar drive, I realized I had no memory of the previous 4 of them.
+
+I might've just been tired. A weekend of lifting boxes in the August heat will do that, and one drive is not data. But it stuck with me through the whole move, which is more than most of my ideas manage.
+
+---
+
+Here's where I landed. The truck talked the entire time I drove it.
+
+The engine told me when to shift, through the pedals and the seat and the noise. The clutch gave me its friction point every single time I asked for it. Engine braking told me how much speed I was actually carrying into a turn, in the same motion that scrubbed the speed off. Even the quirks carried information: the thing rattled a certain way above 55, so I knew what 55 felt like without checking.
+
+It arrived continuously, through my hands and my feet, with no request from me and no way to shut it off.
+
+Go back to that driveway for a second. The owner's handoff was a shift-point spec: what the engine would tell me, and how the answer would drift as the thing warmed up. He'd owned that truck for years, and what he thought I needed was its vocabulary.
+
+My car's transmission knows all the same things. Gear, load, slip, temperature. It stays quiet about every one of them until something goes wrong enough to earn a light on the dash. By then the conversation is over and I'm just receiving the verdict.
+
+The engagement I felt in the truck was a side effect of bandwidth. I was being talked to.
+
+---
+
+Sometime during the second weekend, I realized I'd written about this twice already, both times thinking I was writing about software.
+
+In June, I shipped a release of `para-vault-mcp`, and [Make the silence loud](/blog/make-the-silence-loud) was the write-up. The bug that started it: a tool returned an empty array for a query, and the agent consuming that array told me, with total confidence, that I had nothing in a particular area of my vault. I had 4 projects there. One line of unquoted YAML made them invisible. Nothing errored. The fix was a `dateErrors` field on the response, so a value the tool can't parse gets named out loud instead of swallowed.
+
+In August, I shipped [Stale state can't hide](/blog/stale-state-cant-hide). Different bug, same skeleton. The tool that opens my daily review handed the agent a file _path_ instead of the file, the agent already had a copy of that note from earlier in the day, and it reconciled my entire day against a version that was several hours stale. Clean run. Wrong reality. The fix was an `include_body` flag that reads the current bytes off disk at the one chokepoint every review passes through, so the live note is in the response and the cache has nothing to win.
+
+Both of those are the automatic transmission. The system knew something true and had no channel to say it.
+
+---
+
+So the design claim I'll actually commit to: a tool earns trust by reporting its state _while_ the work happens, at the moment the caller is passing through it.
+
+`dateErrors` is the engine note telling you to shift. The `truncated: true` flag on a bounded read is the tach. `include_body` is the clutch handing you its friction point on every press.
+
+Each one is a flag and a bit of plumbing. What they buy is a system that keeps talking, and a driver who therefore keeps listening.
+
+---
+
+There's a second piece in here that I like considerably less, because it's about me.
+
+I stayed engaged with the truck because it wouldn't let me leave. My attention followed the signal. I didn't summon it out of good character, and I'd be flattering myself to say otherwise.
+
+Which means the honest version of "stay engaged with your agents" has very little to do with resolve. I wrote back in August that you can't ask a caller to remember to re-read, because remembering is precisely what failed. Same problem, with me as the caller.
+
+If my attention wanders when a system goes quiet, the fix has to live in the tool. Building the noise in is something I can actually ship.
+
+---
+
+The counterweight, and I think it matters more than the rest of this.
+
+The truck's feedback cost me something real. Merging onto the highway with a full bed, in third, windows down because there's no AC, I could not hold a conversation. Every channel was occupied. Full-time feedback consumes the operator, and an agent that narrates every step it takes is just a slower way of getting me to stop reading.
+
+The truck gets away with it because its signals are cheap. You feel them in your hands before you've thought about them. That's the real bar for tool output, and most of what our tools emit doesn't come close to clearing it. A wall of verbose logging is silence wearing a different outfit.
+
+Cheap to read, and only at the points where being wrong is expensive. That's the whole design rule, and it took a borrowed pickup to make me say it plainly.
+
+---
+
+I gave the truck back in August, just before the real move started. The automatic is the right car for the daily drive, and I'm not about to romanticize a vehicle with no air conditioning in August.
+
+But I kept the question it left me with. When I hand something to a machine, what is the machine still telling me while it works? If the answer is nothing, I've got a gauge left to build.
