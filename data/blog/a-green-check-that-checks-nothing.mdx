@@ -1,0 +1,45 @@
+---
+title: 'A green check that checks nothing'
+date: '2026-11-01'
+tags: ['ai', 'mcp', 'para-vault-mcp', 'lab-note']
+draft: false
+summary: "v0.6 of para-vault-mcp was about absence: a broken project file shouldn't vanish quietly. Shipping it turned up a run of checks that passed while checking nothing, some of them mine. The cheap fix is to make a check fail on purpose before you trust it passing."
+---
+
+_A para-vault-mcp lab note, the sixth in the series. Predecessor: [Stale state can't hide](/blog/stale-state-cant-hide). Each release ships against a discipline; this one is about absence._
+
+v0.6 of `para-vault-mcp` shipped on August 26 with one idea at its center: absence is a signal. Before it, a project whose `_project.md` had broken frontmatter simply fell out of `find_project`'s filtered results. Nothing errored. The vault just looked a little smaller than it was. Now the tool returns `{projects, parseFailures}` — a census of every project it couldn't read, built before any filter runs, so a broken file can't drop out of view by failing to match.
+
+That was the plan. What the release actually became was a list of checks that passed while checking nothing — and I kept finding them in the code that was supposed to fix the problem.
+
+---
+
+The first one was in the parser. `@11ty/gray-matter` caches results by content, and it writes the cache entry _before_ it parses. When the YAML throws, the cache keeps an empty result with no error attached, and every later call on the same content gets that clean-looking object back. The MCP server is a long-lived process. So the new census would have reported a corrupted project on the first call of a session and then gone quiet for the rest of it. The release's own anchor, defeated by its parser.
+
+Opting out of that cache fixed it — and made an existing test useless. The test guarded a different cache bug, in a branch that was now unreachable. It still ran. It still went green. It protected nothing. The cure had brought the disease with it, and the agent reviewing that task's diff caught it, not me.
+
+Then the type checker. `pnpm typecheck` had never checked anything under `test/` — the config included `src/` and nothing else. Every green run since May had been a statement about half the code.
+
+My first fix exited 0 with zero test files in the program. The test config overrode `include` but inherited the base `exclude`, which listed `test`, and `exclude` wins. I only noticed because I'd planted a type error on purpose and it didn't fire. Without that, I'd have closed the issue with a config that passed CI and verified nothing.
+
+The fix I actually shipped did it again, more quietly. I described the new `typecheck` as a strict superset of the old one. It wasn't. To reach `test/`, the config relaxed `rootDir`, and that relaxation suppressed the error TypeScript raises when `src/` imports from outside `src/`. I'd bought test coverage by silently selling a class of errors the old command caught. I found it only because filing a follow-up issue made me re-check a claim I'd already made.
+
+---
+
+Two more turned up after the release, during routine dependency sweeps — the kind of maintenance that's supposed to be boring.
+
+In September, an open advisory came with a documented remediation: bump vitest to the next major. I tried it. Tests passed, 148 of 148, and the vulnerable package didn't move. The plan was plausible, written down, and wrong. A plain lockfile regen cleared it.
+
+In October, that move wasn't available — a full regen would have dragged runtime dependencies past versions I'd just verified. So I reached for `pnpm update --depth Infinity` on the one transitive package. It ran clean and changed nothing; pnpm keeps a pin that still satisfies its parent's range. Dropping the stale lockfile entry and letting pnpm re-resolve it moved one package, in a four-line diff.
+
+Seven instances in one small codebase. The two clearest were mine.
+
+---
+
+What they have in common isn't carelessness. Each check answered a question — did it exit 0, did the tests pass, did the command succeed — that sat one step to the side of the question I was actually asking. The answer was honest. It just wasn't about the thing.
+
+The corrective move, the one that caught most of these, is cheap: **make the check fail on purpose before you trust it passing.** Plant the type error. Plant the import that should break the build. Mutate the file between two calls and confirm the second one sees it. October's sweep also bumped two runtime dependencies that sit on the tool-schema path, and there green CI wasn't the evidence — booting the server on both versions and diffing `tools/list` byte for byte was.
+
+A check you've never seen fail is a claim, not a check.
+
+[para-vault-mcp on GitHub](https://github.com/robertwtucker/para-vault-mcp).
