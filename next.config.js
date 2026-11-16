@@ -68,6 +68,9 @@ module.exports = () => {
     basePath,
     reactStrictMode: true,
     trailingSlash: true,
+    experimental: {
+      agentUpgrade: 'security',
+    },
     turbopack: {
       root: process.cwd(),
       rules: {
