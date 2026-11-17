@@ -1,0 +1,77 @@
+---
+title: 'Prod has no test data'
+date: '2026-11-16'
+tags: ['ai', 'generalist-integrator', 'mcp']
+draft: false
+summary: "My first production bug, at Pennzoil in the early '90s, came from a read that returned nothing. Test and staging were full of data; prod on its first day had none. 30-plus years later, the AI assistant I build with writes against whatever it can see, which makes remembering that prod has no test data part of my job."
+---
+
+My first production bug came from a read that returned nothing.
+
+I started at Pennzoil in June 1993, fresh out of college. After two months of training, I joined a team building a control system around the company's EDI implementation.
+
+Pennzoil hadn't adopted EDI by choice — Walmart required it. My senior on the project was somewhere around 50, and when he was doing my orientation, Walmart's position came out roughly like this: if you want to put your yellow bottles on our shelves, you'll send us your invoices by EDI.
+
+We wrote it in Natural against an Adabas database, both from Software AG. It ran on an IBM 3090-600J under MVS. I wrote several modules for it. The one this story is about managed the profiles of the system's associated users, which were other systems: invoicing, order processing, and so on. It passed in test. It passed in staging.
+
+It fell over on its first run in prod.
+
+I heard about it from the same senior who'd oriented me. I never did find out who caught it first.
+
+---
+
+The project was already underway when I joined. By the time I showed up, test and staging had been in use for a while, and they were full of the records a system accumulates once people start working in it.
+
+Prod had none of that. You don't migrate test data into production. Prod starts empty and fills up as the real work arrives.
+
+My module opened by reading the existing profiles and listing them on screen. From there you could create a new one or edit one you'd picked. Somewhere in that code was an assumption I didn't know I'd made: the read would come back with rows. In test, it always did. Staging always did, too. Every run I'd ever watched had profiles waiting for it.
+
+In prod, no system had a profile yet, and this was the screen you'd use to create the first one. On that first run, nothing was the only possible answer, and the code had no idea what to do about it.
+
+The fix was an IF statement. A line or two: notice the read came back with nothing, and skip the lines that tried to process what it returned. I don't remember the exact syntax anymore. I remember how small it was, and that's the part that stuck.
+
+---
+
+The lesson I took from it was simple, and I still think it's right. A programmer has to anticipate everything that can go wrong, and the first thing on that list is the read that comes back with nothing.
+
+I've handled the empty case in every program I've written since. That's more than 30 years now. It's the closest thing I have to a reflex: before I think about what the code does with the data, I think about what it does when there isn't any.
+
+One bug, and a habit that's held for 3 decades.
+
+---
+
+For a long time I filed this under "be careful," which is true and not very useful. It took me years to see what had actually happened.
+
+My code had been tested, and tested honestly, in environments that couldn't produce the failure. Test and staging matched prod in every way someone had thought to make them match. What they couldn't be was empty. Somebody had to load data into them to make them useful, and the moment they did, they stopped resembling production on its first day.
+
+That's the part I think generalizes. An empty state is the one state every environment passes through on its way to being useful, and the one no test environment keeps. Nobody builds a staging system and leaves it blank. So the day-one condition of production (nothing there yet) is exactly the condition nobody tested against.
+
+Staging fidelity is a promise about the things you remembered to copy. Prod reality includes everything else.
+
+---
+
+I've been thinking about that module again because of how I write code now.
+
+Most of what I build these days, I build with an AI assistant in the loop. And the assistant is in the same position I was in 1993: a capable newcomer dropped into a project that's already underway. It writes against the world it can see. The fixtures in the repo. The sample payload I paste into the prompt. The dev database with a few hundred rows already loaded. Every one of those has data in it, because that's what makes them useful as context.
+
+So the code it hands back is shaped by what it was shown. I don't have a clean empty-read story of my own from this side yet, but I have one close enough to make the point. I was building an MCP server at work, and the agent wrote the schemas for the APIs it was wrapping. They looked right. Days later, while I was trying to work out why the code was failing, the agent reported back:
+
+> 5 of 5 schemas are wrong. The failures are structural — not ‘we missed a field’ but ‘the schema author guessed an entire field-naming convention.’
+
+The schema author was the agent. (I [posted the exchange](https://x.com/robertwtucker/status/2054989032875057368) at the time.) Probably because I hadn't specifically told it to work from the OpenAPI spec, it had filled the gap with something plausible from its training.
+
+That's the same mechanism that sank my module. Whatever isn't in front of the assistant gets assumed, and the assumption tends to be the version where things go the way they usually do. An empty read is one more thing nobody put in front of it.
+
+I've watched the same failure from the other end, too. Back in June, a tool I maintain returned an empty array for a perfectly reasonable query, and the agent reading that array told me, with complete confidence, that I had nothing in that part of my vault. I had 4 projects there. The empty result was a parsing bug dressed up as an answer. (I wrote that one up as [Make the silence loud](/blog/make-the-silence-loud).)
+
+Put the two side by side and the empty set gets you coming and going. Write code that never expects it, and the code breaks. Read an empty answer too trustingly, and you believe it. At Pennzoil, the empty was real and my code couldn't cope with it. In 2026, the empty was false and the agent had no reason to doubt it.
+
+---
+
+This is where I think the years actually pay for themselves.
+
+Writing the empty-set branch takes about a minute, for me or for the assistant. Back then, it was one IF statement in Natural. Knowing to ask for it is the part that took a production failure to install.
+
+So it's become part of how I review. Before I read what the code does with the data, I ask what it does when there isn't any. And when an empty answer comes back, I ask whether it's actually empty or just quiet.
+
+Prod still has no test data. It never will. Somebody on the project has to remember that, and these days, the somebody is usually me.
